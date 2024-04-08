@@ -9,13 +9,18 @@ import { ProductListComponent } from './Features/Product/product-list/product-li
 import { AddCategoryComponent } from './Features/Product/add-category/add-category.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './Core/Components/header/header.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     ProductListComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    HeaderComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
