@@ -4,23 +4,26 @@ import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SidebarComponent } from './Core/Components/sidebar/sidebar.component';
+
 import { ProductListComponent } from './Features/Product/product-list/product-list.component';
 import { AddCategoryComponent } from './Features/Product/add-category/add-category.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { HeaderComponent } from './Core/Components/header/header.component';
+import { SidenavComponent } from './Core/Components/sidenav/sidenav.component';
+import { CustomerListComponent } from './Features/Customer/customer-list/customer-list.component';
+import { AddCustomerComponent } from './Features/customer/add-customer/add-customer.component';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent,
     ProductListComponent,
     AddCategoryComponent,
-    HeaderComponent,
-    SidebarComponent
+    SidenavComponent,
+    CustomerListComponent,
+    AddCustomerComponent,
   ],
   imports: [
     BrowserModule,

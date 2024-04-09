@@ -1,0 +1,61 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items vertically */
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #f8f9fa;
+    padding-top: 20px; /* adjust according to your navbar height */
+  }
+  .sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #333;
+    display: inline-block;
+    line-height: 40px;
+  }
+
+  .sidebar a:hover {
+    background-color: rgb(156, 156, 241);
+    border-radius: 20px;
+    
+  }
+
+  .main-content {
+    margin-left: 250px; /* adjust according to your sidebar width */
+    padding: 15px;
+    background-image: none;
+  }
+  .sidebar a i {
+    margin-right: 10px; /* Adjust the value as needed for the desired gap */
+}
+h1 {
+    display: flex;
+    align-items: center;
+    height: 50px; /* Adjust the value to match the height of your sidebar items */
+    padding: 0 15px;
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+
+}
+h1 img {
+    margin-right: 10px; /* Adjust the value to add space between the image and text */
+}
+.sidenav a, .dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    border: none;
+    background: none;
+    width:100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+  }

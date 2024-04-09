@@ -4,6 +4,7 @@ import { ProductListComponent } from './Features/Product/product-list/product-li
 import { AddCategoryComponent } from './Features/Product/add-category/add-category.component';
 
 
+
 const routes: Routes = [
   {
     path: 'product/product-list',
