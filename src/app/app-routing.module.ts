@@ -10,6 +10,12 @@ import { LoginComponent } from './Features/auth/login/login.component';
 
 const routes: Routes = [
   {
+    path: 'products',
+    children: [
+      { path: 'product-list', component: ProductListComponent },
+    ]
+  },
+  {
     path: 'login',
     component: LoginComponent
   },

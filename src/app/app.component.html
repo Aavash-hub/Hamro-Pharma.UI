@@ -1,2 +1,9 @@
-<app-sidenav></app-sidenav>
-<router-outlet></router-outlet>
+<div *ngIf="isLoggedIn(); else showLogin">
+    <app-sidenav></app-sidenav>
+    <router-outlet></router-outlet>
+  </div>
+  
+  <ng-template #showLogin>
+    <app-login></app-login>
+  </ng-template>
+  

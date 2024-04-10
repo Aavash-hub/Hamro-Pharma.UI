@@ -58,3 +58,15 @@ h1 img {
     cursor: pointer;
     outline: none;
   }
+  .sidebar-heading {
+    margin-bottom: 20px; /* Add gap at the bottom */
+    border-bottom: 2px solid #ddd; /* Add border at the bottom */
+    padding-bottom: 10px; /* Optional: Add padding at the bottom */
+  }
+  
+  .sidebar-heading h1 {
+    margin: 0; /* Remove default margin */
+    font-size: 1.5em; /* Optional: Adjust font size */
+    color: #333; /* Optional: Adjust text color */
+  }
+

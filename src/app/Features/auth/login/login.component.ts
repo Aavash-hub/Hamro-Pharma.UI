@@ -27,7 +27,13 @@ export class LoginComponent {
         this.cookieService.set('Authorization', 'Bearer ${response.token}',
           undefined, '/', undefined, true, 'Strict'
         );
-        this.router.navigateByUrl('/')
+        //set the user
+        this.authservice.setUser({
+          email: response.email,
+          roles: response.roles
+        })
+
+        this.router.navigateByUrl('User/userlist')
       }
     });
   }
