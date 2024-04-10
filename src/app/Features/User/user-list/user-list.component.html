@@ -1,0 +1,32 @@
+<div class="main">
+    <div class="container">
+        <h1 class="mt-3 pt-5">USER LIST</h1>
+        <div class="d-flex justify-content-end mt-3">
+            <a [routerLink]="['/user/adduser']" class="btn btn-success"> Add user</a>
+        </div>
+        <ng-container *ngIf="Userlist">
+            <table class="table table-bordered mt-3 ">
+                <thead>
+                    <tr class="header-row">
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th> Number</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let userlist of Userlist">
+                        <td>{{userlist.userName}}</td>
+                        <td>{{userlist.email}}</td>
+                        <td>{{userlist.phoneNumber}}</td>
+                        <td><i class="fa-solid fa-pen-to-square"></i></td>
+                        <td><i class="fa-solid fa-delete-left"></i></td>
+
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </ng-container>
+    </div>    
+</div>

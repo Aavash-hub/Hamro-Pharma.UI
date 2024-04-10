@@ -1,0 +1,42 @@
+.main{
+    height: 100%;
+    width: calc(100% - 250px); /* Calculate width excluding sidebar width */
+    margin-left: 250px; /* Same as sidebar width */
+    position: fixed;
+    background: linear-gradient(to left, #556270, #4ecdc4);
+    top: 0;
+    right: 0;
+
+}
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Ensure the table fills the remaining space */
+.table {
+    flex: 1;
+}
+
+/* Optional: Add more styles for better appearance */
+h1 {
+    margin-top: 0;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-content-end {
+    justify-content: flex-end;
+}
+
+.mt-3 {
+    margin-top: 1rem;
+}
+
+.pt-5 {
+    padding-top: 3.125rem; /* Adjust as needed */
+}
+  
