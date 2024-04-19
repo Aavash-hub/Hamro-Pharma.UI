@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductListComponent } from './Features/Product/product-list/product-list.component';
-import { AddCategoryComponent } from './Features/Product/add-category/add-category.component';
 import { UserListComponent } from './Features/User/user-list/user-list.component';
 import { AdduserComponent } from './Features/User/adduser/adduser.component';
 import { LoginComponent } from './Features/auth/login/login.component';
+import { ProductEditComponent } from './Features/Product/product-edit/product-edit.component';
+import { AddProductComponent } from './Features/Product/add-product/add-product.component';
 
 
 
@@ -24,8 +25,12 @@ const routes: Routes = [
     component: ProductListComponent
   },
   {
+    path: 'Product/edit/:id',
+    component: ProductEditComponent
+  },
+  {
     path: 'Product/add-Product',
-    component: AddCategoryComponent
+    component: AddProductComponent
   },
   {
     path: 'User/userlist',

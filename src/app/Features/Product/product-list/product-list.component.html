@@ -5,7 +5,7 @@
             <a [routerLink]="['/Product/add-Product']" class="btn btn-success"> Add Product</a>
         </div>
         <ng-container *ngIf="productList">
-            <table class="table table-bordered mt-3">
+            <table class="table table-borderless mt-3">
                 <thead>
                     <tr class="header-row">
                         <th>Name</th>
@@ -30,5 +30,5 @@
                 </tbody>
             </table>
         </ng-container>
-    </div>    
+    </div>
 </div>

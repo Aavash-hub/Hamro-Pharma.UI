@@ -1,6 +1,79 @@
-.container{
-    background: linear-gradient(to left, #556270, #4ecdc4);
-    padding-left: 250px;
-    width: 100%;
-    height: 100%;
+.main {
+  width: 100%;
+  height: 100vh; /* This makes the div cover the full height of the viewport */
+  padding: 20px;
+  background-color: #f2f2f2;
+  padding-left: 150px;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; 
 }
+
+.container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: -250px; 
+}
+
+h1 {
+  font-size: 28px;
+  color: #333;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.header-row {
+  background-color: #007bff;
+  color: #fff;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #dee2e6;
+}
+
+.btn-primary, .btn-danger {
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+
+.btn-primary:hover, .btn-danger:hover {
+  opacity: 0.8;
+}
+.main .container table {
+    border: none; /* Remove border from all tables inside .main .container */
+  }

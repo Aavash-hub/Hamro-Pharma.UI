@@ -1,72 +1,70 @@
 .sidebar {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center items vertically */
-    height: 100%;
-    width: 250px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #f8f9fa;
-    padding-top: 20px; /* adjust according to your navbar height */
-  }
-  .sidebar a {
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 18px;
-    color: #333;
-    display: inline-block;
-    line-height: 40px;
-  }
-
-  .sidebar a:hover {
-    background-color: rgb(156, 156, 241);
-    
-  }
-
-  .main-content {
-    margin-left: 250px; /* adjust according to your sidebar width */
-    padding: 15px;
-    background-image: none;
-  }
-  .sidebar a i {
-    margin-right: 10px; /* Adjust the value as needed for the desired gap */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #f8f9fa;
+  padding-top: 20px; /* Adjust according to your navbar height */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
-h1 {
-    display: flex;
-    align-items: center;
-    height: 50px; /* Adjust the value to match the height of your sidebar items */
-    padding: 0 15px;
-    margin: 0;
-    font-size: 18px;
-    color: #333;
 
+.sidebar a {
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #333;
+  display: inline-block;
+  line-height: 40px;
+  transition: background-color 0.3s ease; /* Add smooth transition */
 }
-h1 img {
-    margin-right: 10px; /* Adjust the value to add space between the image and text */
-}
-.sidenav a, .dropdown-btn {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #818181;
-    display: block;
-    border: none;
-    background: none;
-    width:100%;
-    text-align: left;
-    cursor: pointer;
-    outline: none;
-  }
-  .sidebar-heading {
-    margin-bottom: 20px; /* Add gap at the bottom */
-    border-bottom: 2px solid #ddd; /* Add border at the bottom */
-    padding-bottom: 10px; /* Optional: Add padding at the bottom */
-  }
-  
-  .sidebar-heading h1 {
-    margin: 0; /* Remove default margin */
-    font-size: 1.5em; /* Optional: Adjust font size */
-    color: #333; /* Optional: Adjust text color */
-  }
 
+.sidebar a:hover {
+  background-color: #c9c9c9; /* Change the background color on hover */
+}
+
+.sidebar-heading {
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.sidebar-heading h1 {
+  margin: 0;
+  font-size: 24px; /* Increase the font size for the heading */
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-heading h1 img {
+  margin-right: 10px;
+  width: 30px; /* Adjust the width of the logo */
+  height: 30px; /* Adjust the height of the logo */
+}
+
+.main-content {
+  margin-left: 250px;
+  padding: 15px;
+  background-image: none;
+}
+
+
+.label {
+  width: 100px; 
+  text-align: right; 
+  margin-right: 10px; 
+}
+
+.name {
+  flex-grow: 1; 
+}
+
+.logout-footer {
+  margin-top: auto; 
+  padding: 10px; 
+  background-color: #f8f9fa; 
+}
