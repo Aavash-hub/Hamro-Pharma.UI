@@ -1,0 +1,30 @@
+<div class="container">
+    <h1 class="mt-3">Purchase Report</h1>
+    <div class="form-group">
+        <label for="purchaseDate">Select Purchase Date:</label>
+        <input type="date" class="form-control" id="purchaseDate" [(ngModel)]="selectedDate" (change)="filterPurchaseReport()">        
+    </div>
+    <div class="mt-3" *ngIf="purchaseReport$ | async as purchaseReport">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Vendor Name</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Purchase Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let purchase of filteredPurchaseReport">
+            <td>{{ purchase.vendorName }}</td>
+            <td>{{ purchase.productName }}</td>
+            <td>{{ purchase.quantity }}</td>
+            <td>{{ purchase.price }}</td>
+            <td>{{ purchase.purchaseDate | date }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

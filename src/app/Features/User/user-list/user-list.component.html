@@ -5,26 +5,28 @@
             <a [routerLink]="['/user/adduser']" class="btn btn-success"> Add user</a>
         </div>
         <ng-container *ngIf="Userlist">
-            <table class="table table-bordered mt-3 ">
+            <table class="table table-bordered mt-3">
                 <thead>
                     <tr class="header-row">
                         <th>Username</th>
                         <th>Email</th>
-                        <th> Number</th>
+                        <th>Number</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let userlist of Userlist">
-                        <td>{{userlist.userName}}</td>
-                        <td>{{userlist.email}}</td>
-                        <td>{{userlist.phoneNumber}}</td>
-                        <td><i class="fa-solid fa-pen-to-square"></i></td>
-                        <td><i class="fa-solid fa-delete-left"></i></td>
-
+                    <tr *ngFor="let user of Userlist">
+                        <td>{{ user.userName }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.phoneNumber }}</td>
+                        <td>
+                            <button class="btn btn-primary" (click)="editUser(user.id)">Edit</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button>
+                        </td>
                     </tr>
-                    
                 </tbody>
             </table>
         </ng-container>

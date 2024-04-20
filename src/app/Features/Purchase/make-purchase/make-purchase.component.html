@@ -1,1 +1,33 @@
-<p>make-purchase works!</p>
+<div class="main">
+    <div class="container">
+      <h1 class="mt-3">Make Purchase</h1>
+      <form (ngSubmit)="makePurchase()">
+        <div class="form-group">
+          <label for="product">Select Product:</label>
+          <select class="form-control" id="product" [(ngModel)]="purchaseDto.productId" name="productId" required>
+            <option *ngFor="let product of productList" [value]="product.id">{{ product.name }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="vendor">Select Vendor:</label>
+          <select class="form-control" id="vendor" [(ngModel)]="purchaseDto.vendorId" name="vendorId" required>
+            <option *ngFor="let vendor of vendorList" [value]="vendor.id">{{ vendor.name }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="quantity">Quantity:</label>
+          <input type="number" class="form-control" id="quantity" [(ngModel)]="purchaseDto.quantity" name="quantity" required>
+        </div>
+        <div class="form-group">
+          <label for="price">Price:</label>
+          <input type="number" class="form-control" id="price" [(ngModel)]="purchaseDto.price" name="price" required>
+        </div>
+        <div class="form-group">
+          <label for="purchaseDate">Purchase Date:</label>
+          <input type="date" class="form-control" id="purchaseDate" [(ngModel)]="purchaseDto.purchaseDate" name="purchaseDate" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Make Purchase</button>
+      </form>
+    </div>
+  </div>
+  

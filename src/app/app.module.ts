@@ -15,11 +15,14 @@ import { UserListComponent } from './Features/User/user-list/user-list.component
 import { AdduserComponent } from './Features/User/adduser/adduser.component';
 import { LoginComponent } from './Features/auth/login/login.component';
 import { MakePurchaseComponent } from './Features/Purchase/make-purchase/make-purchase.component';
-import { PurcahseReportComponent } from './Features/Report/purcahse-report/purcahse-report.component';
 import { AddVendorComponent } from './Features/Vendor/add-vendor/add-vendor.component';
 import { EditVendorComponent } from './Features/Vendor/edit-vendor/edit-vendor.component';
 import { ProductEditComponent } from './Features/Product/product-edit/product-edit.component';
 import { AddProductComponent } from './Features/Product/add-product/add-product.component';
+import { EditUserComponent } from './Features/User/edit-user/edit-user.component';
+import { VendorListComponent } from './Features/Vendor/vendor-list/vendor-list.component';
+import { EditCustomerComponent } from './Features/Customer/edit-customer/edit-customer.component';
+import { PurchaseReportComponent } from './Features/Reports/purchase-report/purchase-report.component';
 
 
 @NgModule({
@@ -33,11 +36,14 @@ import { AddProductComponent } from './Features/Product/add-product/add-product.
     AdduserComponent,
     LoginComponent,
     MakePurchaseComponent,
-    PurcahseReportComponent,
     AddVendorComponent,
     EditVendorComponent,
     ProductEditComponent,
     AddProductComponent,
+    EditUserComponent,
+    VendorListComponent,
+    EditCustomerComponent,
+    PurchaseReportComponent,
   ],
   imports: [
     BrowserModule,

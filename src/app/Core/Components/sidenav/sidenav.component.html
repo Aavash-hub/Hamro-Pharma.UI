@@ -9,20 +9,36 @@
     <i class="fa-solid fa-gauge mr-2"></i>
     Dashboard
   </a>
-  <a (click)="toggleProductsMenu()" [class.active]="isProductsMenuOpen">
+  <a [routerLink]="['/product/product-list']">
     <i class="fa-solid fa-warehouse"></i>
     Products
   </a>
-  <ul *ngIf="isProductsMenuOpen">
-    <li>
-      <a [routerLink]="['/products/product-list']" routerLinkActive="router-link-active">Product List</a>
-    </li>
-  </ul>
-  <a [routerLink]="['User/userlist']" routerLinkActive="router-link-active" class="user">
+  
+  <a [routerLink]="['User/userlist']" routerLinkActive="router-link-active" class="active">
     <i class="fa-solid fa-clipboard-user mr-2"></i>
     User
-  </a>
+  </a>  
 
+  <a [routerLink]="['/vendor/vendor-list']" routerLinkActive="router-link-active" class="active">
+    <i class="fa-solid fa-clipboard-user mr-2"></i>
+    Vendor
+  </a> 
+   <a [routerLink]="['/Customer/customer-list']" routerLinkActive="router-link-active" class="active">
+    <i class="fa-solid fa-clipboard-user mr-2"></i>
+    Customer
+  </a>  
+   <a [routerLink]="['/purchase']" routerLinkActive="router-link-active" class="active">
+    <i class="fa-solid fa-clipboard-user mr-2"></i>
+    Purchase
+  </a>
+  <div>
+    <a href="#" (click)="toggleReportMenu()">Reports</a>
+  
+    <div *ngIf="isReportMenuOpen">
+      <ul>
+        <li><a routerLink="report/purchasereport" routerLinkActive="router-link-active" class="active">purchaseReport</a></li>
+      </ul>
+    </div>
   <div class="logout-footer">
     <button (click)="onLogout()">Logout</button>
   </div>

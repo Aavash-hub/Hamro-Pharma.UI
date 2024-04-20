@@ -9,7 +9,7 @@ import { User } from 'src/app/Features/auth/models/user.model';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent implements OnInit {
-  isProductsMenuOpen = false;
+  isReportMenuOpen: boolean = false;
   user?: User;
 
   constructor(private authservice: AuthService,
@@ -17,9 +17,14 @@ export class SidenavComponent implements OnInit {
   ){
 
   }
-toggleProductsMenu(): void {
-    this.isProductsMenuOpen = !this.isProductsMenuOpen;
-}
+  toggleReportMenu(): void {
+    this.isReportMenuOpen = !this.isReportMenuOpen;
+  }
+
+  navigateToPurchaseReport(): void {
+    this.router.navigate(['report/purchasereport']);
+  }
+
   ngOnInit(): void {
       this.authservice.user()
       .subscribe({

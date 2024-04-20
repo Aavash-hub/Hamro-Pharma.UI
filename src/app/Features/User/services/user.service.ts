@@ -8,6 +8,7 @@ import { userlist } from '../../models/userlist.model';
   providedIn: 'root'
 })
 export class UserService {
+  private apiUrl = 'https://localhost:7144/api/user';
 
   constructor(private http: HttpClient) { }
 
@@ -16,5 +17,14 @@ export class UserService {
   }
   getallUser(): Observable<userlist[]>{
     return this.http.get<userlist[]>('https://localhost:7144/api/user');
+  }
+  editUser(id: string, userDto: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${id}`, userDto);
+  }
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${id}`);
+  }
+  getUserById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 }
