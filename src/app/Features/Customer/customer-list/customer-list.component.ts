@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../../models/Customer.model';
 import { CustomerService } from '../service/customer.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-list',
@@ -8,10 +9,23 @@ import { CustomerService } from '../service/customer.service';
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-
+  showAddCustomerForm: boolean = false;
+  showEditCustomerForm: boolean = false;
+  // selectedCustomer: Customer | null = null;
   customerList: Customer[] = [];
+  customer: Customer = { 
+    id: '',
+    name: '',
+    email: '',
+    address: '',
+    customerBalance: 0,
+    phoneNumber: ''
+  };
 
-  constructor(private customerService: CustomerService) { }
+  constructor(private customerService: CustomerService,
+    private route:ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.customerService.getAllCustomers().subscribe({
@@ -36,5 +50,11 @@ export class CustomerListComponent implements OnInit {
         }
       });
     }
+  }
+  toggleAddCustomerForm(): void {
+    this.showAddCustomerForm = !this.showAddCustomerForm;
+  }
+  toggleEditCustomerForm() {
+    this.showEditCustomerForm = !this.showEditCustomerForm;
   }
 }

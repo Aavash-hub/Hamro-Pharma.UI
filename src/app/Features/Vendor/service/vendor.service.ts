@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Vendor } from '../../models/vendor.model';
+import { AddVendorRequest } from '../../models/Add-vendor-request.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -15,8 +16,8 @@ export class VendorService {
     return this.http.get<Vendor[]>(this.apiUrl);
   }
 
-  addVendor(vendor: Vendor): Observable<Vendor> {
-    return this.http.post<Vendor>(this.apiUrl, vendor);
+  addVendor(AddVendorRequest: any): Observable<Vendor> {
+    return this.http.post<Vendor>(this.apiUrl, AddVendorRequest);
   }
 
   getVendorById(id: string): Observable<Vendor> {

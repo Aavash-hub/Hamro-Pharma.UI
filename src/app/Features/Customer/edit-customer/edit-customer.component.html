@@ -1,7 +1,7 @@
 <div class="main">
     <div class="container">
         <h1 class="mt-3">Edit Customer</h1>
-        <form (submit)="saveCustomer()">
+        <form (submit)="saveCustomer()" class="centered-form">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" id="name" [(ngModel)]="customer.name" name="name" required>

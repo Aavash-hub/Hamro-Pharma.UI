@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { VendorService } from '../service/vendor.service';
 import { Vendor } from '../../models/vendor.model';
+import { AddVendorRequest } from '../../models/Add-vendor-request.model';
 
 @Component({
   selector: 'app-add-vendor',
@@ -10,13 +11,12 @@ import { Vendor } from '../../models/vendor.model';
 })
 export class AddVendorComponent {
 
-  formData: Vendor = {
+  formData: AddVendorRequest = {
     name: '',
     address: '',
     number: '',
     companyName: '',
     balance: 0,
-    id: ''
   };
 
   constructor(private vendorService: VendorService, private router: Router) { }

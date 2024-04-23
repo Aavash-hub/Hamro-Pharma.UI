@@ -20,8 +20,8 @@ export class CustomerService {
     return this.http.get<Customer>(`${this.apiUrl}/${id}`);
   }
 
-  addCustomer(customer: Customer): Observable<Customer> {
-    return this.http.post<Customer>(this.apiUrl, customer);
+  addCustomer(AddCustomerRequest: any): Observable<Customer> {
+    return this.http.post<Customer>(this.apiUrl, AddCustomerRequest);
   }
 
   editCustomer(id: string, customer: Customer): Observable<any> {
@@ -30,5 +30,8 @@ export class CustomerService {
 
   deleteCustomer(id: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${id}`);
+  }
+  payCustomerBalance(id: string, amount: number): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/pay/${id}`, { amount });
   }
 }

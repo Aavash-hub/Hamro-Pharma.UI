@@ -1,0 +1,26 @@
+<div class="container">
+    <h1 class="mt-3">Sales Report</h1>
+    <div class="mt-3" *ngIf="salesReport$ | async as salesReport">
+      <table class="table table-bordered sales-table">
+        <thead class="thead-light">
+          <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Total Amount</th>
+            <th>Customer Name</th>
+            <th>Transaction Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sale of salesReport">
+            <td>{{ sale.productName }}</td>
+            <td>{{ sale.quantity }}</td>
+            <td>{{ sale.totalAmount }}</td>
+            <td>{{ sale.customerName }}</td>
+            <td>{{ sale.transactionDate | date }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

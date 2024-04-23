@@ -1,0 +1,40 @@
+.main{
+    padding-left: 250px;
+}
+
+.sales-report-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.report-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.report-summary {
+    margin-bottom: 20px;
+}
+
+.report-summary p {
+    margin: 5px 0;
+}
+
+.report-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.report-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.total-sales {
+    font-weight: bold;
+    margin-top: 20px;
+}

@@ -2,8 +2,14 @@
     <div class="container">
         <h1 class="mt-3 pt-5">VENDOR LIST</h1>
         <div class="d-flex justify-content-end mt-3">
-            <a [routerLink]="['/Vendor/add-vendor']" class="btn btn-success"> Add Vendor</a>
+            <div *ngIf="!showAddVendorForm">
+                <button class="btn btn-success" (click)="toggleAddVendorForm()">Add Vendor</button>
+            </div>
         </div>
+        <div class="overlay" *ngIf="showAddVendorForm" (click)="toggleAddVendorForm()"></div>
+        <ng-container *ngIf="showAddVendorForm">
+            <app-add-vendor></app-add-vendor>
+        </ng-container>
         <ng-container *ngIf="vendorList">
             <table class="table table-borderless mt-3">
                 <thead>

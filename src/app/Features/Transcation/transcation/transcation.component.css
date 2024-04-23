@@ -1,0 +1,36 @@
+.card-header {
+    background-color: #007bff;
+    color: white;
+}
+
+.card {
+    margin: 20px auto;
+    max-width: 600px; /* Limit the maximum width of the card */
+}
+
+.card-title {
+    margin-bottom: 0;
+}
+
+/* Control the card body padding */
+.card-body {
+    padding: 20px;
+}
+
+/* Align footer content to center and adjust padding */
+.card-footer {
+    text-align: center;
+    padding: 10px 20px;
+}
+
+/* Small form control sizes */
+.form-control-sm, .form-select-sm {
+    max-width: 100%; /* Use 100% width within the card */
+    margin: 0 auto; /* Center the form controls if needed */
+}
+
+/* Adjust button size and margins */
+.btn-success {
+    padding: 10px 30px;
+    margin-top: 10px;
+}

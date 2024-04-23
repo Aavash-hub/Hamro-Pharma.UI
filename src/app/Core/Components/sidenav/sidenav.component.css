@@ -1,70 +1,121 @@
+/* Sidebar styles */
 .sidebar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
   width: 250px;
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #f8f9fa;
-  padding-top: 20px; /* Adjust according to your navbar height */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+  justify-content: flex-start;
 }
 
-.sidebar a {
-  padding: 10px 15px;
-  text-decoration: none;
-  font-size: 18px;
-  color: #333;
-  display: inline-block;
-  line-height: 40px;
-  transition: background-color 0.3s ease; /* Add smooth transition */
-}
-
-.sidebar a:hover {
-  background-color: #c9c9c9; /* Change the background color on hover */
-}
-
+/* Sidebar heading with logo and text */
 .sidebar-heading {
-  margin-bottom: 20px;
-  border-bottom: 2px solid #ddd;
-  padding-bottom: 10px;
-}
-
-.sidebar-heading h1 {
-  margin: 0;
-  font-size: 24px; /* Increase the font size for the heading */
-  color: #333;
   display: flex;
   align-items: center;
+  justify-content: center; /* Center the content horizontally */
+  flex-wrap: wrap; /* Allow the items to wrap */
+  padding: 1rem;
+  background-color: #f2f4f8;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.sidebar-heading h1 img {
+.logo {
+  width: 40px;
+  height: 40px;
   margin-right: 10px;
-  width: 30px; /* Adjust the width of the logo */
-  height: 30px; /* Adjust the height of the logo */
 }
 
-.main-content {
-  margin-left: 250px;
-  padding: 15px;
-  background-image: none;
+/* Remove the content property for pseudo-element */
+.sidebar::before {
+  display: none;
 }
 
-
-.label {
-  width: 100px; 
-  text-align: right; 
-  margin-right: 10px; 
+/* Adjust sidebar title styling next to logo */
+.sidebar-heading span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
 }
 
-.name {
-  flex-grow: 1; 
+/* Sidebar navigation links */
+.nav-link {
+  padding: 0.75rem 1rem; /* Increased padding for better touch targets */
+  color: #333;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s;
 }
 
+.nav-link i {
+  margin-right: 0.5rem;
+}
+
+/* Make Dashboard link bigger and more prominent */
+.nav-link.dashboard {
+  font-size: 1.2rem; /* Larger font size for Dashboard link */
+  font-weight: bold; /* Make it bold */
+  color: #d9534f; /* Different color to stand out */
+}
+
+/* Hover effect for nav links */
+.nav-link:hover {
+  background-color: #f4f4f4;
+}
+
+/* Logout button */
+.btn-logout {
+  padding: 0.75rem 1rem;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  text-align: center;
+  width: 100%;
+  position: absolute; /* Logout button stays at the bottom */
+  bottom: 0; /* Position at the bottom of sidebar */
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Logout footer */
 .logout-footer {
-  margin-top: auto; 
-  padding: 10px; 
-  background-color: #f8f9fa; 
+  margin-top: auto; /* Auto margin to push footer to the bottom */
+  width: 100%; /* Full width */
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+  display: none; /* Hide dropdown by default */
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100%;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Dropdown item hover effect */
+.dropdown-item:hover {
+  background-color: #e9ecef;
+}
+
+/* Additional responsive adjustments if needed */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    position: static;
+    height: auto;
+  }
+
+  .btn-logout {
+    position: static; /* Make logout button static on smaller screens */
+  }
 }

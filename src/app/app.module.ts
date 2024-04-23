@@ -23,6 +23,15 @@ import { EditUserComponent } from './Features/User/edit-user/edit-user.component
 import { VendorListComponent } from './Features/Vendor/vendor-list/vendor-list.component';
 import { EditCustomerComponent } from './Features/Customer/edit-customer/edit-customer.component';
 import { PurchaseReportComponent } from './Features/Reports/purchase-report/purchase-report.component';
+import { OrderComponent } from './Features/Order/order/order.component';
+import { SalesReportComponent } from './Features/Reports/sales-report/sales-report.component';
+import { DashboardComponent } from './Features/DashBoard/dashboard/dashboard.component';
+import { CustomerBalanceComponent } from './Features/Customer/customer-balance/customer-balance.component';
+import { TranscationComponent } from './Features/Transcation/transcation/transcation.component';
+
+
+
+
 
 
 @NgModule({
@@ -44,6 +53,12 @@ import { PurchaseReportComponent } from './Features/Reports/purchase-report/purc
     VendorListComponent,
     EditCustomerComponent,
     PurchaseReportComponent,
+    OrderComponent,
+    SalesReportComponent,
+    DashboardComponent,
+    CustomerBalanceComponent,
+    TranscationComponent
+
   ],
   imports: [
     BrowserModule,

@@ -28,9 +28,10 @@ export class PurchaseReportComponent implements OnInit {
   }
 
   filterPurchaseReport(): void {
-    const selectedDateString = this.selectedDate.toISOString().slice(0, 10);
-    this.filteredPurchaseReport = this.filteredPurchaseReport.filter(purchase => {
-      return purchase.purchaseDate.toISOString().slice(0, 10) === selectedDateString;
-    });
-  }
+    if (!(this.selectedDate instanceof Date) || isNaN(this.selectedDate.getTime())) {
+        console.error('Selected date is not a valid Date object.');
+        return; // Exit the function if the selectedDate is not a valid Date
+    }
+    // Continue with filtering logic
+}
 }

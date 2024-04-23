@@ -15,6 +15,12 @@ import { CustomerListComponent } from './Features/Customer/customer-list/custome
 import { AddCustomerComponent } from './Features/Customer/add-customer/add-customer.component';
 import { EditCustomerComponent } from './Features/Customer/edit-customer/edit-customer.component';
 import { PurchaseReportComponent } from './Features/Reports/purchase-report/purchase-report.component';
+import { OrderComponent } from './Features/Order/order/order.component';
+import { SalesReportComponent } from './Features/Reports/sales-report/sales-report.component';
+
+import { CustomerBalanceComponent } from './Features/Customer/customer-balance/customer-balance.component';
+import { DashboardComponent } from './Features/DashBoard/dashboard/dashboard.component';
+import { TranscationComponent } from './Features/Transcation/transcation/transcation.component';
 
 
 
@@ -72,12 +78,32 @@ const routes: Routes = [
     component:CustomerListComponent
   },
   {
+    path:'Customer/balance/:id',
+    component:CustomerBalanceComponent
+  },
+  {
     path: 'Customer/add-customer',
     component: AddCustomerComponent
   },  
   {
-    path: 'customer/customer-edit',
+    path: 'Customer/customer-edit/:id',
     component:EditCustomerComponent
+  },
+  {
+    path: 'Order',
+    component:OrderComponent
+  },
+  {
+    path:'Report/sales-report',
+    component: SalesReportComponent
+  },
+  {
+    path: 'transcation/:id',
+    component: TranscationComponent
+  },
+  {
+    path:'Dashboard',
+    component: DashboardComponent
   }
 ];
 

@@ -10,6 +10,7 @@ import { Vendor } from '../../models/vendor.model';
 export class VendorListComponent implements OnInit {
 
   vendorList: Vendor[] = [];
+  showAddVendorForm: boolean = false;
 
   constructor(private vendorService: VendorService) { }
 
@@ -36,5 +37,8 @@ export class VendorListComponent implements OnInit {
         }
       });
     }
+  }
+  toggleAddVendorForm(): void {
+    this.showAddVendorForm = !this.showAddVendorForm;
   }
 }

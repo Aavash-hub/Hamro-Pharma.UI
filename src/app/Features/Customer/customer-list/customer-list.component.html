@@ -2,8 +2,12 @@
     <div class="container">
         <h1 class="mt-3 pt-5">CUSTOMER LIST</h1>
         <div class="d-flex justify-content-end mt-3">
-            <a [routerLink]="['/Customer/add-customer']" class="btn btn-success">Add Customer</a>
+            <button class="btn btn-success" (click)="toggleAddCustomerForm()">Add Customer</button>
         </div>
+        <div class="overlay" *ngIf="showAddCustomerForm" (click)="toggleAddCustomerForm()"></div>
+        <ng-container *ngIf="showAddCustomerForm">
+            <app-add-customer></app-add-customer>
+        </ng-container>
         <ng-container *ngIf="customerList">
             <table class="table table-borderless mt-3">
                 <thead>
@@ -15,20 +19,26 @@
                         <th>Balance</th>
                         <th>Edit</th>
                         <th>Delete</th>
+                        <th>Pay</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let customer of customerList">
                         <td>{{ customer.name }}</td>
                         <td>{{ customer.email }}</td>
-                        <td>{{ customer.phoneNumber}}</td>
+                        <td>{{ customer.phoneNumber }}</td>
                         <td>{{ customer.address }}</td>
                         <td>{{ customer.customerBalance }}</td>
-                        <td><a [routerLink]="['/Customer/edit-customer', customer.id]" class="btn btn-primary">Edit</a></td>
+                        <td><a [routerLink]="['/Customer/customer-edit', customer.id]" class="btn btn-primary">Edit</a></td>
                         <td><button class="btn btn-danger" (click)="deleteCustomer(customer.id)">Delete</button></td>
+                        <td><a [routerLink]="['/Customer/balance', customer.id]" class="btn btn-primary">Pay</a></td>
                     </tr>
                 </tbody>
             </table>
+        </ng-container>
+        <ng-container *ngIf="showEditCustomerForm">
+            <app-edit-customer></app-edit-customer>
         </ng-container>
     </div>
 </div>

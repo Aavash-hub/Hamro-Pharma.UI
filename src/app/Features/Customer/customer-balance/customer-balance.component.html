@@ -1,0 +1,21 @@
+<div class="main">
+    <h2>Customer Balance</h2>
+    <div>
+      <label for="customerId">Customer ID:</label>
+      <input type="text" id="customerId" [value]="customerId" disabled>
+    </div>
+    <div>
+      <label for="customerName">Customer Name:</label>
+      <input type="text" id="customerName" [value]="customerName" disabled>
+    </div>
+    <div>
+      <label for="balance">Current Balance:</label>
+      <input type="number" id="balance" [value]="balance" disabled>
+    </div>
+    <div>
+      <label for="amount">Amount to Pay:</label>
+      <input type="number" id="amount" [(ngModel)]="amount" required>
+    </div>
+    <button (click)="payCustomerBalance(customerId, amount)">Pay</button>
+  </div>
+  

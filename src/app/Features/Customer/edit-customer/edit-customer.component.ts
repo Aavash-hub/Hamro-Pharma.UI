@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CustomerService } from '../service/customer.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from '../../models/Customer.model';
@@ -9,7 +9,6 @@ import { Customer } from '../../models/Customer.model';
   styleUrls: ['./edit-customer.component.css']
 })
 export class EditCustomerComponent implements OnInit {
-
   customer: Customer = {
     id: '',
     name: '',

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Products } from '../../models/Product.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -10,8 +11,11 @@ import { Products } from '../../models/Product.model';
 export class ProductListComponent implements OnInit {
 
   productList: Products[] = [];
+  showAddProductForm: boolean = false;
+  showEditProductForm: boolean = false;
+  editingProduct: Products | null = null;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
     this.productService.getAllProducts().subscribe({
@@ -36,5 +40,9 @@ export class ProductListComponent implements OnInit {
       });
     }
   }
+  toggleAddProductForm(): void {
+    this.showAddProductForm = !this.showAddProductForm;
+  }
+  
 }
 

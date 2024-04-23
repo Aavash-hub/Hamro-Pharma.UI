@@ -1,0 +1,96 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding-left: 250px; /* Space for the fixed sidebar */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom right, #B7E9F7, #AAF7D1); /* Gradient from light blue to light green */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main {
+    
+    background: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: calc(100% - 250px); /* Takes the remaining width minus the sidebar */
+    max-width: 500px; /* Adjust the max-width as necessary */
+    margin-right: auto; /* Ensures the .main content is centered with respect to the remaining space */
+    margin-left: auto;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom right, #B7E9F7, #AAF7D1); /* Gradient from light blue to light green */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Styling Headers */
+h1 {
+    text-align: center;
+    color: #2C3E50;
+    margin-bottom: 30px;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 10px;
+    color: #34495E;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Input and Select Box Enhancements */
+.form-control {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #B7E9F7;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #3498DB;
+    outline: none;
+}
+
+/* Button Enhancements */
+.btn-primary {
+    background-color: #3498DB;
+    border: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #2980B9;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    body, html {
+        padding-left: 0; /* Sidebar likely collapses or changes form on smaller screens */
+    }
+
+    .main {
+        width: auto; /* Allows the .main content to take full width on smaller screens */
+        margin: 20px; /* Adds some space around the .main content */
+        padding: 20px; /* Reduces padding to better fit smaller screens */
+    }
+
+    /* Adjustments for other elements if necessary */
+}

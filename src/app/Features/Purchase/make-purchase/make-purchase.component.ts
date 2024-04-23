@@ -79,5 +79,5 @@ export class MakePurchaseComponent implements OnInit {
       }
     });
   }
-
 }
+

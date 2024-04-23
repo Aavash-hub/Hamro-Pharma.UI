@@ -9,7 +9,7 @@ import { Purchase } from '../../models/Purchase.model';
 })
 export class PurchaseService {
 
-  private apiUrl = 'api/purchase';
+  private apiUrl = 'https://localhost:7144/api/purchase';
 
   constructor(private http: HttpClient) { }
 

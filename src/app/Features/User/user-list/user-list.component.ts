@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class UserListComponent implements OnInit {
   
   Userlist?: userlist[];
+  showAddUserForm: boolean = false;
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -29,9 +30,14 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  editUser(id: string): void {
-    this.router.navigate(['/user/edit', id]);
-  }
+editUser(userId: string): void {
+    if (userId) {
+        this.router.navigate(['/user/edit', userId]);
+    } else {
+        console.error("Invalid user id:", userId);
+    }
+}
+
 
   deleteUser(id: string): void {
     if (confirm('Are you sure you want to delete this user?')) {
@@ -46,5 +52,8 @@ export class UserListComponent implements OnInit {
         }
       });
     }
+  }
+  toggleAddUserForm(): void {
+    this.showAddUserForm = !this.showAddUserForm;
   }
 }

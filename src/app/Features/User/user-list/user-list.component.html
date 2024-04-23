@@ -2,8 +2,14 @@
     <div class="container">
         <h1 class="mt-3 pt-5">USER LIST</h1>
         <div class="d-flex justify-content-end mt-3">
-            <a [routerLink]="['/user/adduser']" class="btn btn-success"> Add user</a>
+            <div *ngIf="!showAddUserForm">
+                <button class="btn btn-success" (click)="toggleAddUserForm()">Add User</button>
+            </div>
         </div>
+        <div class="overlay" *ngIf="showAddUserForm" (click)="toggleAddUserForm()"></div>
+        <ng-container *ngIf="showAddUserForm">
+            <app-adduser></app-adduser>
+        </ng-container>
         <ng-container *ngIf="Userlist">
             <table class="table table-bordered mt-3">
                 <thead>
@@ -30,5 +36,5 @@
                 </tbody>
             </table>
         </ng-container>
-    </div>    
+    </div>
 </div>

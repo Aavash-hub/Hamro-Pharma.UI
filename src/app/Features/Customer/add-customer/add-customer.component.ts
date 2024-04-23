@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Customer } from '../../models/Customer.model';
 import { CustomerService } from '../service/customer.service';
 import { Router } from '@angular/router';
+import { AddCustomerRequest } from '../../models/Add-customer-request.model';
 
 @Component({
   selector: 'app-add-customer',
@@ -9,13 +10,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-customer.component.css']
 })
 export class AddCustomerComponent {
-
-  formData: Customer = {
+  
+  formData: AddCustomerRequest = {
     name: '',
     email: '',
     address: '',
     customerBalance: 0,
-    id: '',
     phoneNumber: ''
   };
 

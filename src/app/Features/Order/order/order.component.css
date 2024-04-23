@@ -1,0 +1,157 @@
+.main {
+    /* Removed height: 100%; as it might not be necessary and could conflict with min-height of container */
+    width: calc(100% - 250px); /* Assuming you have a sidebar of 250px width */
+    margin-left: 250px; /* Move the main content to the right to make space for the sidebar */
+    background-color: #f4f7fa; /* Light blue background color */
+    padding-top: 30px; /* Space at the top */
+    position: relative; /* Relative position to keep it in the flow of the document */
+    transition: all 0.3s ease; /* Smooth transition for any changes */
+}
+
+.container {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9; /* Light grey background */
+    color: #333; /* Dark grey text for better readability on light background */
+    padding: 20px;
+    min-height: 100vh; /* Full viewport height */
+}
+
+.section-title {
+    margin-bottom: 15px;
+    color: #e67e22; /* Soft orange */
+    font-size: 1.5em; /* Slightly larger title font */
+}
+
+/* Product Section */
+.product-section {
+    padding-right: 15px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.product-card {
+    background: #ffffff; /* White background for cards */
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtle shadow for depth */
+    transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+    transform: scale(1.02);
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 4px; /* Slight rounding on images */
+}
+
+.product-info {
+    padding-top: 10px;
+}
+
+.product-name {
+    color: #e67e22; /* Keeping it consistent with the section-title color */
+    margin: 8px 0;
+}
+
+.product-price {
+    color: #7f8c8d; /* Subdued color for price */
+}
+
+/* Buttons */
+.btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    margin: 4px;
+}
+
+.add-to-order {
+    background-color: #2ecc71; /* Green for positive actions */
+    color: white;
+}
+
+.remove-from-order {
+    background-color: #e74c3c; /* Red for removal actions */
+    color: white;
+}
+
+.create-order {
+    background-color: #3498db; /* Blue for primary actions */
+    color: white;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1em;
+    margin-top: 20px;
+    border-radius: 6px;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+/* Order Section */
+.order-section {
+    padding-left: 15px;
+}
+
+.order-list-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-weight: bold;
+    border-bottom: 2px solid #ecf0f1; /* Light border for the header */
+}
+
+.list-product, .list-quantity, .list-price, .list-actions {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.ordered-item-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ecf0f1; /* Light border for each item */
+}
+
+.item-name {
+    color: #333;
+}
+
+.item-quantity, .item-price {
+    color: #95a5a6; /* Subtle color for item details */
+}
+
+/* General Container Style */
+.main {
+    width: calc(100% - 250px); /* Adjust width for sidebar if present */
+    margin-left: 250px; /* Adjust for sidebar */
+    position: relative; /* Changed from fixed to relative */
+    background-color: #f9f9f9; /* Matched with the base container color */
+    padding-top: 30px; /* Added padding for visual spacing */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .main {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+/* Add transitions for smooth loading of elements */
+.main, .container, .product-card, .ordered-item-card {
+    transition: all 0.3s ease;
+}

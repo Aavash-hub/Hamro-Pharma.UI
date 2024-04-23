@@ -1,9 +1,16 @@
+give a panel same for edit with value 
 <div class="main">
     <div class="container">
         <h1 class="mt-3 pt-5">PRODUCT LIST</h1>
         <div class="d-flex justify-content-end mt-3">
-            <a [routerLink]="['/Product/add-Product']" class="btn btn-success"> Add Product</a>
+            <div *ngIf="!showAddProductForm">
+                <button class="btn btn-success" (click)="toggleAddProductForm()">Add Product</button>
+            </div>
         </div>
+        <div class="overlay" *ngIf="showAddProductForm" (click)="toggleAddProductForm()"></div>
+        <ng-container *ngIf="showAddProductForm">
+            <app-add-product></app-add-product>
+        </ng-container>
         <ng-container *ngIf="productList">
             <table class="table table-borderless mt-3">
                 <thead>

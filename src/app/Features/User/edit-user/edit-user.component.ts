@@ -33,8 +33,12 @@ export class EditUserComponent implements OnInit {
             console.error('Failed to retrieve user:', error);
           }
         });
+      } else {
+        console.error('User id is undefined');
+        // Handle the case where userId is undefined, e.g., display an error message
       }
     }
+    
   
     saveUser(): void {
       this.userService.editUser(this.user.id, this.user).subscribe({
