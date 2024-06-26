@@ -49,13 +49,13 @@
         <div class="col-md-4">
             <div class="card shadow-sm">
                 <div class="card-header">
-                    Expiring Drugs
+                    Expired Drugs
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item" *ngFor="let drug of expiredDrugs">
                         <span>{{ drug.productName }}</span>
                         <span class="text-danger float-right">
-                            Expires on: {{ drug.expiryDate | date:'mediumDate' }}
+                            Expired on: {{ drug.expiryDate | date:'mediumDate' }}
                         </span>
                     </li>
                 </ul>

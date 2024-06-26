@@ -12,7 +12,7 @@ export class TranscationService {
   private apiUrl = "https://localhost:7144/api/transcation";
 
   constructor(private http: HttpClient) {}
-
+ 
   addTransaction(transactionDto: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/add`, transactionDto).pipe(
       catchError(this.handleError)
