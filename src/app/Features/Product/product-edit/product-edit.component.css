@@ -1,48 +1,74 @@
+/* Centering the form and background styles */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom right, #66BB6A, #43A047); /* Gradient from green to dark green */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main container styles */
 .main {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+  margin: 20px; /* Adjusts for some space around the content */
+}
+
+/* Form Group Styling */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 10px;
+  color: #34495E;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Input and Select Box Enhancements */
+.form-control {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid #000; /* Black border */
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: #3498DB;
+  outline: none;
+}
+
+/* Button Enhancements */
+.btn-primary {
+  background-color: #3498DB;
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #2980B9;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .main {
+      width: auto; /* Allows the .main content to take full width on smaller screens */
+      margin: 20px; /* Adds some space around the .main content */
+      padding: 20px; /* Reduces padding to better fit smaller screens */
   }
-  
-  .container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    font-weight: bold;
-  }
-  
-  input[type="text"],
-  input[type="number"],
-  textarea,
-  input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    border: none;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
+}

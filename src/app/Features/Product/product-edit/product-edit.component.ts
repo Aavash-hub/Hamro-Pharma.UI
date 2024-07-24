@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Products } from '../../models/Product.model';
@@ -10,7 +10,7 @@ import { Products } from '../../models/Product.model';
 })
 export class ProductEditComponent implements OnInit {
 
-  product: Products = {
+  @Input() product: Products = {
     id: '',
     name: '',
     description: '',
@@ -19,6 +19,8 @@ export class ProductEditComponent implements OnInit {
     expiryDate: new Date(),
     createdDate: new Date()
   };
+  showSuccessDialog = false;
+  showErrorDialog = false;
 
   constructor(
     private productService: ProductService,
@@ -43,11 +45,23 @@ export class ProductEditComponent implements OnInit {
   saveProduct(): void {
     this.productService.editProduct(this.product.id, this.product).subscribe({
       next: () => {
-        this.router.navigate(['/products']);
+        this.showSuccessDialog = true;
       },
       error: (error) => {
         console.error('Failed to update product:', error);
+        this.showErrorDialog = true;
       }
     });
+  }
+
+  closeSuccessDialog(): void {
+    this.showSuccessDialog = false;
+    this.router.navigateByUrl('/products').then(() => {
+      window.location.reload();
+    });
+  }
+
+  closeErrorDialog(): void {
+    this.showErrorDialog = false;
   }
 }

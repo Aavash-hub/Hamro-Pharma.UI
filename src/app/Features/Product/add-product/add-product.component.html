@@ -31,4 +31,8 @@
           </div>
       </div>
   </div>
+  <app-success-dialog *ngIf="showSuccessDialog" (close)="closeSuccessDialog()"></app-success-dialog>
+
+  <!-- Error Dialog -->
+  <app-errordialog *ngIf="showErrorDialog" (close)="closeErrorDialog()"></app-errordialog>
 </div>

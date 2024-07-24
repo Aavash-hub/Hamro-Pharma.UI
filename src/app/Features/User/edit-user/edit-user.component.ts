@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UserService } from '../services/user.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { userlist } from '../../models/userlist.model';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-user',
@@ -9,20 +10,24 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EditUserComponent implements OnInit {
 
-    user: any = {
-      id: '',
-      username: '',
-      email: '',
-      phoneNumber: ''
-    };
-  
-    constructor(
-      private userService: UserService,
-      private route: ActivatedRoute,
-      private router: Router
-    ) { }
-  
-    ngOnInit(): void {
+  @Input() user: userlist = {
+    id: '',
+    userName: '',
+    email: '',
+    phoneNumber: ''
+  };
+  @Output() success = new EventEmitter<void>();
+  @Output() error = new EventEmitter<void>();
+  showEditUserForm: boolean = true;
+
+  constructor(
+    private userService: UserService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
+
+  ngOnInit(): void {
+    if (!this.user.id) {
       const userId = this.route.snapshot.paramMap.get('id');
       if (userId) {
         this.userService.getUserById(userId).subscribe({
@@ -30,24 +35,32 @@ export class EditUserComponent implements OnInit {
             this.user = user;
           },
           error: (error) => {
+            this.error.emit();
             console.error('Failed to retrieve user:', error);
           }
         });
       } else {
         console.error('User id is undefined');
-        // Handle the case where userId is undefined, e.g., display an error message
       }
     }
-    
-  
-    saveUser(): void {
-      this.userService.editUser(this.user.id, this.user).subscribe({
-        next: () => {
-          this.router.navigate(['/users']);
-        },
-        error: (error) => {
-          console.error('Failed to update user:', error);
-        }
-      });
-    }
+  }
+
+  saveUser(): void {
+    this.userService.editUser(this.user.id, this.user).subscribe({
+      next: () => {
+        this.success.emit();
+        this.router.navigateByUrl('/users').then(() => {
+          window.location.reload();
+        });
+      },
+      error: (error) => {
+        this.error.emit();
+        console.error('Failed to update user:', error);
+      }
+    });
+  }
+
+  closeEditUserForm(): void {
+    this.showEditUserForm = false;
+  }
 }

@@ -1,7 +1,8 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { AddUserRequest } from '../../models/add-user-request.model';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-adduser',
@@ -11,7 +12,7 @@ import { UserService } from '../services/user.service';
 export class AdduserComponent implements OnDestroy {
   model: AddUserRequest;
   private addUserSubscription?: Subscription;
-  constructor(private userservice: UserService){
+  constructor(private userservice: UserService,private router: Router ){
     this.model ={
       name: '',
       Email: '',
@@ -19,16 +20,23 @@ export class AdduserComponent implements OnDestroy {
       Number: ''
     };
   }
+  @Output() success = new EventEmitter<void>();
+  @Output() error = new EventEmitter<void>();
+  
   onFormSubmit(){
     this.addUserSubscription = this.userservice.adduser(this.model).subscribe({
-      next: (Response)=>{
-        console.log("User add sucessfully")
+      next: () => {
+        this.success.emit();
+        this.router.navigateByUrl('/users').then(() => {
+          window.location.reload();
+        });
       },
-      error: (error)=>{
-        console.log("therer was an error while adding User")
+      error: () => {
+        this.error.emit();
       }
-    })
+    });
   }
+
   ngOnDestroy(): void {
     this.addUserSubscription?.unsubscribe();
   }

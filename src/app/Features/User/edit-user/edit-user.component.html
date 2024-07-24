@@ -1,19 +1,23 @@
-<div>
+<div class="overlay" *ngIf="showEditUserForm" (click)="closeEditUserForm()"></div>
+<div class="panel panel-default" *ngIf="showEditUserForm">
+  <div class="panel-heading">
     <h2>Edit User</h2>
+  </div>
+  <div class="panel-body">
     <form (ngSubmit)="saveUser()">
-      <div>
+      <div class="form-group">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" [(ngModel)]="user.username" required>
+        <input type="text" id="username" name="username" [(ngModel)]="user.userName" class="form-control" required>
       </div>
-      <div>
+      <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" [(ngModel)]="user.email" required>
+        <input type="email" id="email" name="email" [(ngModel)]="user.email" class="form-control" required>
       </div>
-      <div>
+      <div class="form-group">
         <label for="phoneNumber">Phone Number:</label>
-        <input type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="user.phoneNumber" required>
+        <input type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="user.phoneNumber" class="form-control" required>
       </div>
-      <button type="submit">Save</button>
+      <button type="submit" class="btn btn-primary">Save</button>
     </form>
   </div>
-  
+</div>

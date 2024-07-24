@@ -1,7 +1,7 @@
 /* Container and main content */
 .main {
     width: calc(100% - 250px); /* Calculate width excluding sidebar width */
-    margin-left: 250px; /* Same as sidebar width */
+    margin-left: 100px; /* Same as sidebar width */
     position: relative; /* Changed from fixed to allow natural page flow */
     background-color: #f4f7fa;
     padding: 2rem; /* Added padding for breathing space around content */
@@ -30,7 +30,7 @@
   }
   
   .header-row th {
-    text-align: left;
+    text-align: center;
     padding: 1rem;
     font-weight: 600;
     color: #333;
@@ -46,9 +46,17 @@
   
   .table td {
     padding: 1rem;
-    vertical-align: middle; /* Align content in the middle vertically */
+    vertical-align: middle;
+    text-align: center;
   }
-  
+
+  .table td button {
+    width: 100%;
+    max-width: 80px; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the buttons */
+    display: block; /* Ensure block display to center align */
+  }
+
   .table td:last-child {
     text-align: right;
   }
@@ -138,4 +146,14 @@
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     max-width: 500px; /* Adjust the width as needed */
+  }
+  .pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  
+  .pagination-controls span {
+    margin: 0 1rem;
   }
