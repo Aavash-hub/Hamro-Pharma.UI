@@ -9,32 +9,25 @@ import { User } from 'src/app/Features/auth/models/user.model';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent implements OnInit {
-  isReportMenuOpen: boolean = false;
+  isReportMenuOpen = false;
   user?: User;
 
-  constructor(private authservice: AuthService,
-    private router: Router
-  ){
+  constructor(private authservice: AuthService, private router: Router) {}
 
-  }
-  toggleReportMenu(): void {
+  toggleReportMenu() {
     this.isReportMenuOpen = !this.isReportMenuOpen;
   }
 
-  navigateToPurchaseReport(): void {
-    this.router.navigate(['report/purchasereport']);
+  ngOnInit(): void {
+    this.authservice.user().subscribe({
+      next: (response) => {
+        this.user = response;
+      }
+    });
   }
 
-  ngOnInit(): void {
-      this.authservice.user()
-      .subscribe({
-        next: (response) =>{
-          this.user = response;
-        }
-      })
-  }
-  onLogout (): void{
+  onLogout(): void {
     this.authservice.logout();
-    this.router.navigateByUrl('login')
+    this.router.navigateByUrl('login');
   }
 }

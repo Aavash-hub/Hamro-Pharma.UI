@@ -33,7 +33,7 @@ export class LoginComponent {
           roles: response.roles
         })
 
-        this.router.navigateByUrl('User/userlist')
+        this.router.navigateByUrl('Dashboard')
       }
     });
   }

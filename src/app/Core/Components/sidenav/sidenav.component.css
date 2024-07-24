@@ -1,121 +1,100 @@
-/* Sidebar styles */
 .sidebar {
   width: 250px;
   height: 100vh;
-  background-color: #fff;
-  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+  background-color: #e9e9e9b5; /* New Grey Color */
   position: fixed;
   top: 0;
   left: 0;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  padding-top: 2rem;
-  justify-content: flex-start;
-}
-
-/* Sidebar heading with logo and text */
-.sidebar-heading {
-  display: flex;
   align-items: center;
-  justify-content: center; /* Center the content horizontally */
-  flex-wrap: wrap; /* Allow the items to wrap */
-  padding: 1rem;
-  background-color: #f2f4f8;
-  border-bottom: 1px solid #e0e0e0;
+  border-radius: 15px; /* Rounded corners */
+  padding-top: 1rem;
+  border: 2px solid #dcdcdc; /* Aesthetic border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
+  width: 120px; /* Increased size */
+  height: 120px; /* Increased size */
+  border-radius: 50%; /* Make the logo circular */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow for more attractiveness */
 }
 
-/* Remove the content property for pseudo-element */
-.sidebar::before {
-  display: none;
-}
-
-/* Adjust sidebar title styling next to logo */
-.sidebar-heading span {
+h3 {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #333;
+  color: #010101; /* Light Beige */
+  margin: 1rem 0;
+}
+
+.search-container {
+  padding: 0.5rem;
+  width: 100%;
 }
 
 /* Sidebar navigation links */
 .nav-link {
-  padding: 0.75rem 1rem; /* Increased padding for better touch targets */
-  color: #333;
+  padding: 1rem;
+  color: #1f1e1e; /* Light Beige */
   text-decoration: none;
   display: flex;
   align-items: center;
+  width: 100%;
+  justify-content: flex-start;
   transition: background-color 0.2s;
+  border-radius: 8px; /* Rounded corners */
+  margin: 0.25rem 0;
 }
 
 .nav-link i {
   margin-right: 0.5rem;
 }
 
-/* Make Dashboard link bigger and more prominent */
-.nav-link.dashboard {
-  font-size: 1.2rem; /* Larger font size for Dashboard link */
-  font-weight: bold; /* Make it bold */
-  color: #d9534f; /* Different color to stand out */
+.nav-link:hover, .nav-link.active {
+  background-color: rgb(0, 0, 0); /* Light Blue from image */
+  color: #ffffff; /* Navy Blue */
 }
 
-/* Hover effect for nav links */
-.nav-link:hover {
-  background-color: #f4f4f4;
+/* Dropdown menu styling */
+.dropdown-menu {
+  background-color: #d6cfcfb5; /* Adjusted Light Blue from image */
+}
+
+.dropdown-item {
+  padding: 0.75rem 1rem;
+  color: #080807; 
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.2s;
+  border-radius: 8px; 
+}
+
+.dropdown-item:hover {
+  background-color: #030e14; /* Light Blue from image */
+  color: #ffffff; 
 }
 
 /* Logout button */
 .btn-logout {
   padding: 0.75rem 1rem;
-  background-color: #dc3545;
+  background-color: #f6f7f8; /* Grey */
   color: #fff;
   border: none;
   text-align: center;
   width: 100%;
-  position: absolute; /* Logout button stays at the bottom */
-  bottom: 0; /* Position at the bottom of sidebar */
-  border-top: 1px solid #e0e0e0;
+  border-radius: 8px; /* Rounded corners */
+  margin-bottom: 1rem; /* Add some spacing from the bottom */
 }
 
-/* Logout footer */
 .logout-footer {
-  margin-top: auto; /* Auto margin to push footer to the bottom */
-  width: 100%; /* Full width */
+  width: 100%;
 }
 
-/* Dropdown menu styling */
-.dropdown-menu {
-  display: none; /* Hide dropdown by default */
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 100%;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
-/* Show dropdown on hover */
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-
-/* Dropdown item hover effect */
-.dropdown-item:hover {
-  background-color: #e9ecef;
-}
-
-/* Additional responsive adjustments if needed */
-@media (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-    position: static;
-    height: auto;
-  }
-
-  .btn-logout {
-    position: static; /* Make logout button static on smaller screens */
-  }
+.content {
+  margin-left: 250px;
+  flex-grow: 1;
+  padding: 1rem;
+  background-color: #f7f9f9; /* Light Grey background for content */
 }

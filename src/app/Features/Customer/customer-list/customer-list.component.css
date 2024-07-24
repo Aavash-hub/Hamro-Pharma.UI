@@ -1,7 +1,7 @@
 /* Container and main content */
 .main {
-  width: calc(100% - 250px); /* Calculate width excluding sidebar width */
-  margin-left: 250px; /* Same as sidebar width */
+  width: calc(100% - 100px); /* Calculate width excluding sidebar width */
+  margin-left: 100px; /* Same as sidebar width */
   position: relative; /* Changed from fixed to allow natural page flow */
   background-color: #f4f7fa;
   padding: 2rem; /* Added padding for breathing space around content */

@@ -1,53 +1,52 @@
-<div class="app-container">
-  <div class="sidebar">
-    <div class="sidebar">
-      <div class="sidebar-heading text-truncate">
-        <img src="assets/logo/logo.png" alt="Logo" class="logo">
-        <span>Hamro-Pharma</span>
-      </div>
-      <nav class="nav flex-column">
-        <a [routerLink]="['/Dashboard']" routerLinkActive="router-link-active" class="nav-link">
-          <i class="fa-solid fa-gauge"></i>
-          Dashboard
+<div class="app-container d-flex">
+  <div class="sidebar text-white d-flex flex-column align-items-center py-4">
+    <img src="assets/logo/logo.png" alt="Logo" class="logo mb-3">
+    <h3>Hamro-Pharma</h3>
+    <nav class="nav flex-column w-100 mt-4">
+      <a [routerLink]="['/Dashboard']" routerLinkActive="active" class="nav-link">
+        <i class="fa-solid fa-gauge"></i>
+        Dashboard
+      </a>
+      <a [routerLink]="['/product/product-list']" routerLinkActive="active" class="nav-link">
+        <i class="fa-solid fa-warehouse"></i>
+        Products
+      </a>
+      <a [routerLink]="['/User/userlist']" routerLinkActive="active" class="nav-link">
+        <i class="fa-solid fa-clipboard-user"></i>
+        Users
+      </a>
+      <a [routerLink]="['/vendor/vendor-list']" routerLinkActive="active" class="nav-link">
+        <i class="fa-solid fa-handshake"></i>
+        Vendors
+      </a>
+      <a [routerLink]="['/Customer/customer-list']" routerLinkActive="active" class="nav-link">
+        <i class="fa-solid fa-users"></i>
+        Customers
+      </a>
+      <a [routerLink]="['/purchase']" routerLinkActive="active" class="nav-link">
+        <i class="fa-solid fa-shopping-cart"></i>
+        Purchase
+      </a>
+      <a [routerLink]="['/Order']" routerLinkActive="active" class="nav-link">
+        <i class="fa-solid fa-file-invoice-dollar"></i>
+        Orders
+      </a>
+      <div class="dropdown w-100">
+        <a class="nav-link dropdown-toggle" (click)="toggleReportMenu()">
+          <i class="fa-solid fa-chart-line"></i>
+          Reports
         </a>
-        <a [routerLink]="['/product/product-list']" routerLinkActive="router-link-active" class="nav-link">
-          <i class="fa-solid fa-warehouse"></i>
-          Products
-        </a>
-        <a [routerLink]="['/User/userlist']" routerLinkActive="router-link-active" class="nav-link">
-          <i class="fa-solid fa-clipboard-user"></i>
-          Users
-        </a>
-        <a [routerLink]="['/vendor/vendor-list']" routerLinkActive="router-link-active" class="nav-link">
-          <i class="fa-solid fa-handshake"></i>
-          Vendors
-        </a>
-        <a [routerLink]="['/Customer/customer-list']" routerLinkActive="router-link-active" class="nav-link">
-          <i class="fa-solid fa-users"></i>
-          Customers
-        </a>
-        <a [routerLink]="['/purchase']" routerLinkActive="router-link-active" class="nav-link">
-          <i class="fa-solid fa-shopping-cart"></i>
-          Purchase
-        </a>
-        <a [routerLink]="['/Order']" routerLinkActive="router-link-active" class="nav-link">
-          <i class="fa-solid fa-file-invoice-dollar"></i>
-          Orders
-        </a>
-        <div class="dropdown">
-          <a class="nav-link dropdown-toggle" (mouseenter)="toggleReportMenu()" (mouseleave)="toggleReportMenu()">
-            <i class="fa-solid fa-chart-line"></i>
-            Reports
-          </a>
-          <div *ngIf="isReportMenuOpen" class="dropdown-menu">
-            <a [routerLink]="['/report/purchasereport']" routerLinkActive="router-link-active" class="dropdown-item">Purchase Report</a>
-            <a [routerLink]="['/Report/sales-report']" routerLinkActive="router-link-active" class="dropdown-item">Sales Report</a>
-          </div>
+        <div *ngIf="isReportMenuOpen" class="dropdown-menu show w-100">
+          <a [routerLink]="['/report/purchasereport']" routerLinkActive="active" class="dropdown-item">Purchase Report</a>
+          <a [routerLink]="['/Report/sales-report']" routerLinkActive="active" class="dropdown-item">Sales Report</a>
         </div>
-      </nav>
-      <div class="logout-footer mt-auto">
-        <button (click)="onLogout()" class="btn btn-logout">Logout</button>
       </div>
-    </div>    
+    </nav>
+    <div class="logout-footer mt-auto w-100">
+      <button (click)="onLogout()" class="btn btn-danger w-100">Logout</button>
+    </div>
+  </div>
+  <div class="content p-4">
+    <router-outlet></router-outlet>
   </div>
 </div>

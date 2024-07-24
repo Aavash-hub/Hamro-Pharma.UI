@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,10 +31,8 @@ import { SalesReportComponent } from './Features/Reports/sales-report/sales-repo
 import { DashboardComponent } from './Features/DashBoard/dashboard/dashboard.component';
 import { CustomerBalanceComponent } from './Features/Customer/customer-balance/customer-balance.component';
 import { TranscationComponent } from './Features/Transcation/transcation/transcation.component';
-
-
-
-
+import { SuccessDialogComponent } from './Core/Dialogbox/success-dialog/success-dialog.component';
+import { ErrordialogComponent } from './Core/Dialogbox/errordialog/errordialog.component';
 
 
 @NgModule({
@@ -57,15 +58,20 @@ import { TranscationComponent } from './Features/Transcation/transcation/transca
     SalesReportComponent,
     DashboardComponent,
     CustomerBalanceComponent,
-    TranscationComponent
+    TranscationComponent,
+    SuccessDialogComponent,
+    ErrordialogComponent,
 
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule,
     AppRoutingModule,
     RouterModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
