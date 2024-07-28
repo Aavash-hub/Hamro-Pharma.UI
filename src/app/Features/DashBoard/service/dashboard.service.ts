@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DashboardDto } from '../../models/dashBoard.model';
-import { Observable } from 'rxjs';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { ExpiredDrugDto } from '../../models/ExpiredDrugDto.model';
 
 @Injectable({
@@ -14,8 +14,15 @@ export class DashboardService {
   constructor(private http: HttpClient) {}
 
   getTotalSales(): Observable<number> {
-    return this.http.get<number>(`${this.apiUrl}/total-sales`);
+    return this.http.get<number>(`${this.apiUrl}/total-sales`).pipe(
+      tap(data => console.log('Total Sales:', data)), // Log the data being received
+      catchError((error: any) => {
+        console.error('Error getting total sales', error);
+        return throwError(() => new Error('Failed to get total sales'));
+      })
+    );
   }
+  
 
   getTotalPurchases(): Observable<number> {
     return this.http.get<number>(`${this.apiUrl}/total-purchases`);

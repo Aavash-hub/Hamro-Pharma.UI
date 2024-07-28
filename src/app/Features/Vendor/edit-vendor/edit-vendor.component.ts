@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Vendor } from '../../models/vendor.model';
 
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { VendorService } from '../service/vendor.service';
 })
 export class EditVendorComponent implements OnInit {
 
-  vendor: Vendor = {
+  @Input() vendor: Vendor = {
     id: '',
     name: '',
     address: '',
@@ -19,6 +19,10 @@ export class EditVendorComponent implements OnInit {
     companyName: '',
     balance: 0
   };
+  @Output() success = new EventEmitter<void>();
+  @Output() error = new EventEmitter<void>();
+  showSuccessDialog = false;
+  showErrorDialog = false;
 
   constructor(
     private vendorService: VendorService,
@@ -43,11 +47,23 @@ export class EditVendorComponent implements OnInit {
   saveVendor(): void {
     this.vendorService.editVendor(this.vendor.id, this.vendor).subscribe({
       next: () => {
-        this.router.navigate(['/vendor/vendor-list']);
+        this.success.emit();
       },
       error: (error) => {
         console.error('Failed to update vendor:', error);
+        this.error.emit();
       }
     });
+  }
+
+  closeSuccessDialog(): void {
+    this.showSuccessDialog = false;
+    this.router.navigateByUrl('/vendors').then(() => {
+      window.location.reload();
+    });
+  }
+
+  closeErrorDialog(): void {
+    this.showErrorDialog = false;
   }
 }

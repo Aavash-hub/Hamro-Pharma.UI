@@ -1,40 +1,114 @@
-.main{
-    padding-left: 250px;
-}
-
-.sales-report-container {
-    border: 1px solid #ccc;
-    border-radius: 5px;
+/* General Styles */
+.container {
     padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Deeper shadow for a "lifted card" effect */
+    border-radius: 8px;
+    margin: 20px auto; /* Center the container on page */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 1200px; /* Max width for better readability on larger screens */
+}
+
+h1 {
+    color: #333;
+    text-align: center;
     margin-bottom: 20px;
+    font-size: 24px; /* Slightly larger for better emphasis */
 }
 
-.report-title {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.report-summary {
-    margin-bottom: 20px;
-}
-
-.report-summary p {
-    margin: 5px 0;
-}
-
-.report-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.report-item {
-    border: 1px solid #ddd;
-    border-radius: 5px;
+/* Enhancements for Date Input */
+.form-control[type="date"] {
+    width: 200px;
     padding: 10px;
-    margin-bottom: 10px;
+    border: 2px solid #4CAF50; /* Thicker border with color accent */
+    border-radius: 4px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s; /* Smooth transition for focus */
 }
 
-.total-sales {
-    font-weight: bold;
-    margin-top: 20px;
+.form-control[type="date"]:focus {
+    border-color: #45a049; /* Darker green when focused */
+    outline: none; /* Remove default focus outline */
 }
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff; /* Light background for the table */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    font-family: Arial, sans-serif; /* Modern font */
+}
+
+.table thead th {
+    padding: 10px 15px;
+    background-color: #f9f9f9; /* Very light gray for the header */
+    color: #333; /* Dark text for contrast */
+    font-weight: normal; /* Avoid bold headers to match the design */
+    text-align: left;
+    border-bottom: 2px solid #eee; /* Light separator for clarity */
+    position: relative; /* Needed for absolute positioning of sort icons */
+}
+
+.sort-icon {
+    float: right; /* Position the icon to the right of the text */
+    cursor: pointer; /* Make it appear clickable */
+    user-select: none; /* Prevent text selection */
+}
+
+.table tbody tr:hover {
+    background-color: #f0f0f0; /* Hover effect for rows */
+}
+
+.table th, 
+.table td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #ddd; /* Light lines for separation */
+}
+
+/* Styling for hover effects on the headers for interactivity */
+.table thead th:hover {
+    background-color: #e0e0e0; /* Slightly darker background on hover */
+}
+
+/* Ensuring headers are not highlighted on hover */
+.table thead th:hover .sort-icon {
+    color: #333; /* Maintain icon color consistency */
+}
+
+
+/* Enhanced Pagination Controls */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-size: 16px; /* Larger font size for better readability */
+}
+
+.pagination-controls button {
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth all transitions */
+}
+
+.pagination-controls button:hover {
+    background-color: #369639; /* Slightly darker on hover */
+}
+
+.pagination-controls button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.6; /* Slightly transparent to signal unavailability */
+}
+
+.pagination-controls span {
+    margin: 0 10px;
+    color: #666; /* Darker text for better visibility */
+}
+
+

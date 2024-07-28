@@ -33,6 +33,7 @@ export class AddProductComponent {
       }
     });
   }
+  
   closeSuccessDialog() {
     this.showSuccessDialog = false;
     this.router.navigateByUrl('product/product-list').then(() => {

@@ -32,6 +32,7 @@ import { CustomerBalanceComponent } from './Features/Customer/customer-balance/c
 import { TranscationComponent } from './Features/Transcation/transcation/transcation.component';
 import { SuccessDialogComponent } from './Core/Components/Dialogbox/success-dialog/success-dialog.component';
 import { ErrordialogComponent } from './Core/Components/Dialogbox/errordialog/errordialog.component';
+import { VendorBalanceComponent } from './Features/Vendor/vendor-balance/vendor-balance.component';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { ErrordialogComponent } from './Core/Components/Dialogbox/errordialog/er
     TranscationComponent,
     SuccessDialogComponent,
     ErrordialogComponent,
+    VendorBalanceComponent,
 
   ],
   imports: [

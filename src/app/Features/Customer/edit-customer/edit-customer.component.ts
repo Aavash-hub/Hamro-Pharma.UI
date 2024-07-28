@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CustomerService } from '../service/customer.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from '../../models/Customer.model';
@@ -9,14 +9,18 @@ import { Customer } from '../../models/Customer.model';
   styleUrls: ['./edit-customer.component.css']
 })
 export class EditCustomerComponent implements OnInit {
-  customer: Customer = {
+  @Input() customer: Customer = {
     id: '',
     name: '',
     email: '',
+    phoneNumber: '',
     address: '',
-    customerBalance: 0,
-    phoneNumber: ''
+    customerBalance: 0
   };
+  @Output() success = new EventEmitter<void>();
+  @Output() error = new EventEmitter<void>();
+  showSuccessDialog = false;
+  showErrorDialog = false;
 
   constructor(
     private customerService: CustomerService,
@@ -41,11 +45,23 @@ export class EditCustomerComponent implements OnInit {
   saveCustomer(): void {
     this.customerService.editCustomer(this.customer.id, this.customer).subscribe({
       next: () => {
-        this.router.navigate(['/customers']);
+        this.success.emit();
       },
       error: (error) => {
         console.error('Failed to update customer:', error);
+        this.error.emit();
       }
     });
+  }
+
+  closeSuccessDialog(): void {
+    this.showSuccessDialog = false;
+    this.router.navigateByUrl('/customers').then(() => {
+      window.location.reload();
+    });
+  }
+
+  closeErrorDialog(): void {
+    this.showErrorDialog = false;
   }
 }

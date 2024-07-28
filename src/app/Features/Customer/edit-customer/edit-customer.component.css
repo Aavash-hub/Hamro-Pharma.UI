@@ -1,58 +1,74 @@
-.container {
-    position: absolute;
-    top: 50%;
-    left: 90%;
-    transform: translate(-50%, -50%);
+/* Centering the form and background styles */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom right, #66BB6A, #43A047); /* Gradient from green to dark green */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.centered-form {
-    width: 300px; /* Adjust width as needed */
-    max-width: 100%; /* Ensures the form doesn't exceed the container's width */
+/* Main container styles */
+.main {
+  background: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+  margin: 20px; /* Adjusts for some space around the content */
 }
 
-  
-  h1 {
-    margin-bottom: 20px; /* Add spacing below the heading */
+/* Form Group Styling */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 10px;
+  color: #34495E;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Input and Select Box Enhancements */
+.form-control {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid #000; /* Black border */
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: #3498DB;
+  outline: none;
+}
+
+/* Button Enhancements */
+.btn-primary {
+  background-color: #3498DB;
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #2980B9;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .main {
+      width: auto; /* Allows the .main content to take full width on smaller screens */
+      margin: 20px; /* Adds some space around the .main content */
+      padding: 20px; /* Reduces padding to better fit smaller screens */
   }
-  
-  .form-group {
-    margin-bottom: 20px; /* Add spacing between form groups */
-  }
-  
-  label {
-    font-weight: bold; /* Bold label text */
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  input[type="number"] {
-    width: 100%; /* Full width input fields */
-    padding: 10px; /* Add padding */
-    border: 1px solid #ced4da; /* Light gray border */
-    border-radius: 5px; /* Rounded corners */
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; /* Smooth transition */
-  }
-  
-  input[type="text"]:focus,
-  input[type="email"]:focus,
-  input[type="number"]:focus {
-    border-color: #80bdff; /* Blue border color on focus */
-    outline: 0; /* Remove outline */
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Add blue shadow on focus */
-  }
-  
-  .btn-primary {
-    background-color: #007bff; /* Blue button background color */
-    border-color: #007bff; /* Blue button border color */
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3; /* Darker blue background color on hover */
-    border-color: #0056b3; /* Darker blue border color on hover */
-  }
-  
-  .btn-primary:focus,
-  .btn-primary.focus {
-    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5); /* Blue shadow on focus */
-  }
-  
+}

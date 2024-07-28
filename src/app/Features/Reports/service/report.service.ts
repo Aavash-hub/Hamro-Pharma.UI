@@ -10,7 +10,7 @@ import { SalesReportDto } from '../../models/sales-report.model';
 export class ReportService {
 
   private apiUrl = 'https://localhost:7144/api/purchase';
-  private salesReportUrl = 'https://localhost:7144/api/report';
+  private salesReportUrl = 'https://localhost:7144/api/Transcation/report';
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +20,6 @@ export class ReportService {
   }
 
   getSalesReport(): Observable<SalesReportDto[]> {
-    return this.http.get<SalesReportDto[]>(this.apiUrl);
+    return this.http.get<SalesReportDto[]>(this.salesReportUrl);
   }
 }

@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable, catchError, throwError } from 'rxjs';
@@ -13,20 +13,17 @@ export class TranscationService {
 
   constructor(private http: HttpClient) {}
  
-  addTransaction(transactionDto: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/add`, transactionDto).pipe(
-      catchError(this.handleError)
-    );
-}
 
-private handleError(error: HttpErrorResponse) {
-    // User-friendly error message to display
-    const message = `An error occurred: ${error.error.message || "Unknown error"}`;
-    console.error(message);
-    
-    // You might want to output the whole error to the console for debug purposes
-    console.error(error);
-    
-    return throwError(() => new Error(message));
+  addTransaction(orderId: string, transactionDto: TransactionDto): Observable<Transaction> {
+    const url = `${this.apiUrl}/${orderId}`;  // Changed from `/add/${orderId}` to `/${orderId}`
+    return this.http.post<Transaction>(url, transactionDto)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  private handleError(error: any) {
+    console.error('An error occurred:', error);
+    // More detailed error handling would go here
+    return throwError(() => new Error('An error occurred while processing your request'));
   }
 }

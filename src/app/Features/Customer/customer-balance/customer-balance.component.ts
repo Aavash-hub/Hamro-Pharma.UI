@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../service/customer.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Customer } from '../../models/Customer.model';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-customer-balance',
@@ -8,55 +9,44 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./customer-balance.component.css']
 })
 export class CustomerBalanceComponent implements OnInit {
-  customerId: string = '';
-  customerName: string = '';
-  balance: number = 0;
+  @Input() customer: Customer | null = null;
+  @Output() success = new EventEmitter<void>();
+  @Output() error = new EventEmitter<void>();
   amount: number = 0;
+  showSuccessDialog = false;
+  showErrorDialog = false;
 
-  constructor(
-    private route: ActivatedRoute,
-    private customerService: CustomerService,
-    private paymentService: CustomerService
-  ) { }
+  constructor(private customerService: CustomerService, private router: Router) {}
 
-  ngOnInit(): void {
-    const customerId = this.route.snapshot.paramMap.get('id');
-    if (customerId) {
-      this.customerId = customerId;
-      this.customerService.getCustomerById(customerId).subscribe({
-        next: (customer) => {
-          this.customerName = customer.name;
-          this.balance = customer.customerBalance;
+  ngOnInit(): void {}
+
+  payCustomerBalance(): void {
+    if (this.customer && this.amount > 0 && this.customer.customerBalance >= this.amount) {
+      this.customerService.payCustomerBalance(this.customer.id, this.amount, { responseType: 'text' }).subscribe({
+        next: (response) => {
+          console.log('Response:', response);
+          this.success.emit();
+          this.customer!.customerBalance -= this.amount;
         },
         error: (error) => {
-          console.error('Failed to retrieve customer:', error);
+          console.error('Failed to update customer balance:', error);
+          this.error.emit();
         }
       });
+    } else {
+      this.error.emit();
     }
   }
+  
 
-  payCustomerBalance(customerId: string, amount: number): void {
-    if (amount <= 0) {
-      console.error('Invalid payment amount');
-      return;
-    }
+  closeSuccessDialog(): void {
+    this.showSuccessDialog = false;
+    this.router.navigateByUrl('/customers').then(() => {
+      window.location.reload();
+    });
+  }
 
-    if (this.balance < amount) {
-      console.error('Insufficient customer balance');
-      return;
-    }
-
-    this.paymentService.payCustomerBalance(customerId, amount).subscribe(
-      () => {
-        // Handle success
-        console.log('Payment successful');
-        // Optionally, you can update the balance displayed on the UI after successful payment
-        this.balance -= amount;
-      },
-      (error) => {
-        // Handle error
-        console.error('Payment failed:', error);
-      }
-    );
+  closeErrorDialog(): void {
+    this.showErrorDialog = false;
   }
 }

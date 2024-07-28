@@ -1,0 +1,29 @@
+<div class="main">
+    <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Vendor Balance</h3>
+        </div>
+        <div class="panel-body">
+          <div *ngIf="vendor">
+            <div class="form-group">
+              <label for="vendorName">Vendor Name:</label>
+              <input type="text" class="form-control" id="vendorName" [value]="vendor.name" disabled>
+            </div>
+            <div class="form-group">
+              <label for="balance">Current Balance:</label>
+              <input type="number" class="form-control" id="balance" [value]="vendor.balance" disabled>
+            </div>
+            <div class="form-group">
+              <label for="amount">Amount to Pay:</label>
+              <input type="number" class="form-control" id="amount" [(ngModel)]="amount" required>
+            </div>
+            <button class="btn btn-primary" (click)="payVendorBalance()">Pay</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-success-dialog *ngIf="showSuccessDialog" (close)="closeSuccessDialog()"></app-success-dialog>
+    <app-errordialog *ngIf="showErrorDialog" (close)="closeErrorDialog()"></app-errordialog>
+  </div>
+  

@@ -10,28 +10,75 @@ import { ReportService } from '../service/report.service';
   styleUrls: ['./purchase-report.component.css']
 })
 export class PurchaseReportComponent implements OnInit {
-  purchaseReport$!: Observable<PurchaseReport[]>;
-  filteredPurchaseReport: PurchaseReport[] = [];
-  selectedDate: Date = new Date();
+  purchaseReports: PurchaseReport[] = [];
+  filteredPurchaseReports: PurchaseReport[] = [];
+  paginatedPurchaseReports: PurchaseReport[] = [];
+  selectedDate: string = '';
+  currentPage = 1;
+  itemsPerPage = 10;
+  totalPages = 0;
 
-  constructor(private reportService: ReportService) { }
+  constructor(private reportService: ReportService) {}
 
   ngOnInit(): void {
-    this.loadPurchaseReport();
+    this.loadPurchaseReports();
   }
 
-  loadPurchaseReport(): void {
-    this.purchaseReport$ = this.reportService.getPurchaseReport();
-    this.purchaseReport$.subscribe(data => {
-      this.filteredPurchaseReport = data;
+  loadPurchaseReports(): void {
+    this.reportService.getPurchaseReport().subscribe({
+      next: (reports: PurchaseReport[]) => {
+        console.log("Checking date parsing:", reports.map(r => new Date(r.purchaseDate)));
+        this.purchaseReports = reports;
+        this.filteredPurchaseReports = [...reports];
+        this.updatePagination();
+      },
+      error: (error) => {
+        console.error("Error loading purchase reports:", error);
+      }
     });
   }
+  filterPurchaseReports(): void {
+    console.log("Selected Date from Input:", this.selectedDate);
+  
+    const selectedDateString = new Date(this.selectedDate).toISOString().split('T')[0];
+    console.log("Formatted Selected Date:", selectedDateString);
+  
+    this.filteredPurchaseReports = this.purchaseReports.filter(report => {
+      const reportDate = new Date(report.purchaseDate).toISOString().split('T')[0];
+      return reportDate === selectedDateString;
+    });
+  
+    console.log("Filtered Reports:", this.filteredPurchaseReports);
+  
+    this.currentPage = 1;
+    this.updatePagination();
+  }
+  
+  
+  
 
-  filterPurchaseReport(): void {
-    if (!(this.selectedDate instanceof Date) || isNaN(this.selectedDate.getTime())) {
-        console.error('Selected date is not a valid Date object.');
-        return; // Exit the function if the selectedDate is not a valid Date
+  updatePagination(): void {
+    this.totalPages = Math.ceil(this.filteredPurchaseReports.length / this.itemsPerPage);
+    this.setPage(this.currentPage);
+  }
+  
+  setPage(page: number): void {
+    this.currentPage = page;
+    const start = (page - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    this.paginatedPurchaseReports = this.filteredPurchaseReports.slice(start, end);
+  }
+  
+
+  previousPage(): void {
+    if (this.currentPage > 1) {
+      this.setPage(this.currentPage - 1);
     }
-    // Continue with filtering logic
-}
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.setPage(this.currentPage + 1);
+    }
+  }
 }

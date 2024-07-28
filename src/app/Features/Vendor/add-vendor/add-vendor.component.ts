@@ -10,7 +10,6 @@ import { AddVendorRequest } from '../../models/Add-vendor-request.model';
   styleUrls: ['./add-vendor.component.css']
 })
 export class AddVendorComponent {
-
   formData: AddVendorRequest = {
     name: '',
     address: '',
@@ -19,18 +18,33 @@ export class AddVendorComponent {
     balance: 0,
   };
 
+  showSuccessDialog = false;
+  showErrorDialog = false;
+
   constructor(private vendorService: VendorService, private router: Router) { }
 
   onFormSubmit(): void {
     this.vendorService.addVendor(this.formData).subscribe({
       next: (response) => {
-        console.log('Vendor added successfully:', response);
-        // Redirect to the vendor list page after successful addition
-        this.router.navigate(['vendor/vendor-list']);
+        this.showSuccessDialog = true;
       },
       error: (error) => {
-        console.error('Failed to add vendor:', error);
+        this.showErrorDialog = true;
       }
+    });
+  }
+
+  closeSuccessDialog() {
+    this.showSuccessDialog = false;
+    this.router.navigateByUrl('vendor/vendor-list').then(() => {
+      window.location.reload();
+    });
+  }
+
+  closeErrorDialog() {
+    this.showErrorDialog = false;
+    this.router.navigateByUrl('vendor/vendor-list').then(() => {
+      window.location.reload();
     });
   }
 }

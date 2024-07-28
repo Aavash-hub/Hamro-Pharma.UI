@@ -1,113 +1,96 @@
+/* Main Content */
+.main-content {
+  margin-left: 100px; /* Adjust according to your sidebar width */
+}
+
+/* Dashboard Stats */
+.dashboard-stats {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+/* Card Adjustment */
+.dashboard-stats .card {
+  flex: 0 0 auto;
+  width: 24%; /* Adjust based on how many cards per row */
+  margin-bottom: 1rem; /* Space between cards */
+}
+
+.card-body {
+  background-color: white; /* White background for the cards */
+  transition: transform .2s; /* Animation for hover effect */
+}
+
+.card-body:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.display-4 {
+  font-size: 2.5rem; /* Adjust font size accordingly */
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e3e6f0;
+}
+
+.list-group-item {
+  border: none;
+  border-bottom: 1px solid #e3e6f0;
+}
+
+.list-group-item:last-child {
+  border-bottom: none;
+}
+
+.text-danger {
+  font-weight: bold;
+}
+.scrollable-list, .scrollable-products {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.scrollable-list .list-group-item {
+  display: flex;
+  justify-content: space-between;
+}
+
 .card {
-    transition: transform .2s; /* Animation for hover effect */
-  }
-  
-  .card:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-  }
-  
-  .display-4 {
-    font-size: 2.5rem;
-  }
-  
-  .card-header {
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #e3e6f0;
-  }
-  
-  .list-group-item {
-    border: none;
-    border-bottom: 1px solid #e3e6f0;
-  }
-  
-  .list-group-item:last-child {
-    border-bottom: none;
-  }
-  
-  .text-danger {
-    font-weight: bold;
-  }
-  /* Main Content */
-.main-content {
-    margin-left: 250px; /* Adjust according to your sidebar width */
-  }
-  
-  /* Dashboard Stats */
-  .dashboard-stats {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-  }
-  
-  /* Card Adjustment */
+  transition: transform .2s; /* Animation for hover effect */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.display-4 {
+  font-size: 2.5rem;
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e3e6f0;
+}
+
+.list-group-item {
+  border: none;
+  border-bottom: 1px solid #e3e6f0;
+}
+
+.list-group-item:last-child {
+  border-bottom: none;
+}
+
+.text-danger {
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
   .dashboard-stats .card {
-    flex: 0 0 auto;
-    width: 24%; /* Adjust based on how many cards per row */
-    margin-bottom: 1rem; /* Space between cards */
-  }
-  
-  @media (max-width: 768px) {
-    .dashboard-stats .card {
       width: 100%; /* Full width on smaller screens */
-    }
   }
-  
-  /* Ensure sidebar doesn't overlap content */
-  @media (min-width: 992px) {
-    .main-content {
-      margin-left: 250px; /* Same as sidebar width */
-    }
-  }
-  /* Main Content */
-.main-content {
-    margin-left: 250px; /* Adjust according to your sidebar width */
-  }
-  
-  /* Dashboard Stats */
-  .dashboard-stats {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-  }
-  
-  /* Card Adjustment */
-  .dashboard-stats .card {
-    flex: 0 0 auto;
-    width: 24%; /* Adjust based on how many cards per row */
-    margin-bottom: 1rem; /* Space between cards */
-  }
-  
-  @media (max-width: 768px) {
-    .dashboard-stats .card {
-      width: 100%; /* Full width on smaller screens */
-    }
-  }
-  
-  /* Ensure sidebar doesn't overlap content */
-  @media (min-width: 992px) {
-    .main-content {
-      margin-left: 250px; /* Same as sidebar width */
-    }
-  }
-  .vertical-progress {
-    width: 40px; /* Width of the vertical progress bar */
-    height: 150px; /* Height of the vertical progress bar */
-    display: flex;
-    align-items: flex-end; /* Align progress bar to the bottom */
-    margin: 0 auto; /* Center the progress bar */
-  }
-  
-  .progress-bar {
-    width: 100%; /* Full width of the container */
-    transition: height 0.6s ease; /* Smooth transition for height change */
-  }
-  
-  .col {
-    text-align: center; /* Center the month labels */
-  }
-  
-    
+}

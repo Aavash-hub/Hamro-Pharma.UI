@@ -18,7 +18,7 @@ export class UserListComponent implements OnInit {
     id: '',
     userName: '',
     email: '',
-    phoneNumber: ''
+    phoneNumber: '',
   };
   currentPage = 1;
   itemsPerPage = 5;

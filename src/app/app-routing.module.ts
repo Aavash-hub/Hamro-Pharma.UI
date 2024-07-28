@@ -21,6 +21,7 @@ import { SalesReportComponent } from './Features/Reports/sales-report/sales-repo
 import { CustomerBalanceComponent } from './Features/Customer/customer-balance/customer-balance.component';
 import { DashboardComponent } from './Features/DashBoard/dashboard/dashboard.component';
 import { TranscationComponent } from './Features/Transcation/transcation/transcation.component';
+import { VendorBalanceComponent } from './Features/Vendor/vendor-balance/vendor-balance.component';
 
 
 
@@ -60,6 +61,10 @@ const routes: Routes = [
   {
     path: 'Vendor/edit/:id',
     component:EditVendorComponent
+  },  
+  {
+    path: 'Vendor/balance/:id',
+    component:VendorBalanceComponent
   },  
   {
     path: 'Vendor/add-vendor',
@@ -106,7 +111,6 @@ const routes: Routes = [
     component: DashboardComponent
   }
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

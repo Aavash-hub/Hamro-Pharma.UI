@@ -1,20 +1,23 @@
 <div class="card" *ngIf="order">
     <div class="card-header text-center">
-        <h3 class="card-title">Create Transaction for Order #{{ order.id }}</h3>
+      <h3 class="card-title">Transaction</h3>
     </div>
     <div class="card-body">
-        <div class="mb-3">
-            <label for="customer" class="form-label">Customer:</label>
-            <select class="form-select form-select-sm" id="customer" [(ngModel)]="selectedCustomerId">
-                <option *ngFor="let customer of customers" [value]="customer.id">{{ customer.name }}</option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="discount" class="form-label">Discount:</label>
-            <input type="number" class="form-control form-control-sm" id="discount" [(ngModel)]="discount">
-        </div>
+      <div class="mb-3">
+        <label for="customer" class="form-label">Customer:</label>
+        <select class="form-select form-select-sm" id="customer" [(ngModel)]="selectedCustomerId">
+          <option *ngFor="let customer of customers" [value]="customer.id">{{ customer.name }}</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="discount" class="form-label">Discount:</label>
+        <input type="number" class="form-control form-control-sm" id="discount" [(ngModel)]="discount">
+      </div>
     </div>
     <div class="card-footer text-center">
-        <button class="btn btn-success" (click)="createTransaction()">Create Transaction</button>
+      <button class="btn btn-success" (click)="createTransaction()">Create Transaction</button>
     </div>
-</div>
+    <app-success-dialog *ngIf="showSuccessDialog" (close)="closeSuccessDialog()"></app-success-dialog>
+    <app-errordialog *ngIf="showErrorDialog" (close)="closeErrorDialog()"></app-errordialog>
+  </div>
+  

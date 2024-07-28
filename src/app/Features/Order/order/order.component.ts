@@ -84,8 +84,9 @@ export class OrderComponent implements OnInit {
   
 
   navigateToTransactionPage(orderId: string) {
-    this.router.navigate(['/transcation', orderId]); // Adjust the route as needed
-  }
+    this.router.navigate(['/transcation',orderId]);
+  }  
+  
   removeFromOrder(item: OrderDetail): void {
     // Assuming `orderProductsId` is the unique identifier
     const index = this.orderedItems.findIndex(i => i.orderProductsId === item.orderProductsId);
