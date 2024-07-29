@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { DashboardService } from '../service/dashboard.service';
 import { ExpiredDrugDto } from '../../models/ExpiredDrugDto.model';
 import { UserService } from '../../User/services/user.service';
 import { ProductService } from '../../Product/services/product.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -11,74 +12,97 @@ import { ProductService } from '../../Product/services/product.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  totalSales: number = 0;
-  totalPurchases: number = 0;
-  numberOfCustomers: number = 0;
-  numberOfVendors: number = 0;
+  totalSales: number | undefined;
+  totalPurchases: number | undefined;
+  numberOfCustomers: number| undefined;
+  numberOfVendors: number| undefined;
   expiredDrugs: ExpiredDrugDto[] = [];
-  userList: any;
-  productsList: any;
- 
+  userList: any[] = [];
+  productsList: any[] = [];
+  private subscriptions: Subscription = new Subscription();
 
-  constructor(private dashboardService: DashboardService,
+  constructor(
+    private dashboardService: DashboardService,
     private productService: ProductService,
-    private userService: UserService
-
+    private userService: UserService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
+    console.log('Component initialized');
     this.getDashboardData();
 
-    this.userService.getallUser().subscribe(users => {
+    this.subscriptions.add(this.userService.getallUser().subscribe(users => {
       this.userList = users;
-  });
-  this.productService.getAllProducts().subscribe(products => {
-    this.productsList = products;
-  });
+      console.log('User List:', this.userList);
+      this.cdr.detectChanges();
+    }));
+
+    this.subscriptions.add(this.productService.getAllProducts().subscribe(products => {
+      this.productsList = products;
+      console.log('Products List:', this.productsList);
+      this.cdr.detectChanges();
+    }));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   getDashboardData(): void {
-    this.dashboardService.getTotalSales().subscribe({
-      next: (data) => {
-        console.log('Total Sales received in component:', data);
-        this.totalSales = data;
-      },
-      error: (error) => {
-        console.error('Failed to load total sales in component:', error);
-      }
-    });
-  
-    // Repeat for other service calls
-    this.dashboardService.getTotalPurchases().subscribe({
-      next: (data) => {
-        console.log('Total Purchases received in component:', data);
-        this.totalPurchases = data;
-      },
-      error: (error) => console.error('Failed to load total purchases:', error)
-    });
-  
-    this.dashboardService.getCustomerCount().subscribe({
-      next: (data) => {
-        console.log('Customer Count received in component:', data);
-        this.numberOfCustomers = data;
-      },
-      error: (error) => console.error('Failed to load customer count:', error)
-    });
-  
-    this.dashboardService.getVendorCount().subscribe({
-      next: (data) => {
-        console.log('Vendor Count received in component:', data);
-        this.numberOfVendors = data;
-      },
-      error: (error) => console.error('Failed to load vendor count:', error)
-    });
-  
-    this.dashboardService.getExpiredDrugs().subscribe({
-      next: (data) => {
-        console.log('Expired Drugs received in component:', data);
-        this.expiredDrugs = data;
-      },
-      error: (error) => console.error('Failed to load expired drugs:', error)
-    });
+    this.subscriptions.add(
+      this.dashboardService.getTotalSales().subscribe({
+        next: (data) => {
+          console.log('Total Sales received in component:', data);
+          this.totalSales = data;
+          this.cdr.detectChanges();
+        },
+        error: (error) => console.error('Failed to load total sales:', error)
+      })
+    );
+
+    this.subscriptions.add(
+      this.dashboardService.getTotalPurchases().subscribe({
+        next: (data) => {
+          console.log('Total Purchases received in component:', data);
+          this.totalPurchases = data;
+          this.cdr.detectChanges();
+        },
+        error: (error) => console.error('Failed to load total purchases:', error)
+      })
+    );
+
+    this.subscriptions.add(
+      this.dashboardService.getCustomerCount().subscribe({
+        next: (data) => {
+          console.log('Customer Count received in component:', data);
+          this.numberOfCustomers = data;
+          this.cdr.detectChanges();
+        },
+        error: (error) => console.error('Failed to load customer count:', error)
+      })
+    );
+
+    this.subscriptions.add(
+      this.dashboardService.getVendorCount().subscribe({
+        next: (data) => {
+          console.log('Vendor Count received in component:', data);
+          this.numberOfVendors = data;
+          this.cdr.detectChanges();
+        },
+        error: (error) => console.error('Failed to load vendor count:', error)
+      })
+    );
+
+    this.subscriptions.add(
+      this.dashboardService.getExpiredDrugs().subscribe({
+        next: (data) => {
+          console.log('Expired Drugs received in component:', data);
+          this.expiredDrugs = data;
+          this.cdr.detectChanges();
+        },
+        error: (error) => console.error('Failed to load expired drugs:', error)
+      })
+    );
   }
-}  
+}

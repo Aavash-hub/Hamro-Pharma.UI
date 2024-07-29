@@ -1,88 +1,89 @@
 <div class="main-content">
     <div class="container-fluid pt-3">
-        <!-- Stats Cards -->
-        <div class="row mb-4">
-            <!-- Total Customers Card -->
-            <div class="col-lg-3 col-md-6 mb-3" *ngIf="numberOfCustomers !== undefined">
-                <div class="card shadow-sm bg-primary text-white">
-                    <div class="card-body">
-                        <h5 class="card-title">Total Customers</h5>
-                        <p class="card-text display-4">{{ numberOfCustomers }}</p>
-                    </div>
-                </div>
+      <!-- Stats Cards -->
+      <div class="row mb-4">
+        <!-- Total Customers Card -->
+        <div class="col-lg-3 col-md-6 mb-3" *ngIf="numberOfCustomers !== undefined">
+          <div class="card shadow-sm bg-primary text-black">
+            <div class="card-body">
+              <h5 class="card-title">Total Customers</h5>
+              <p class="card-text display-4">{{ numberOfCustomers }}</p>
             </div>
-            <!-- Total Sales Card -->
-            <div class="col-lg-3 col-md-6 mb-3" *ngIf="totalSales !== undefined">
-                <div class="card shadow-sm bg-success text-white">
-                    <div class="card-body">
-                        <h5 class="card-title">Total Sales</h5>
-                        <p class="card-text display-4">{{ totalSales | currency }}</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Total Purchases Card -->
-            <div class="col-lg-3 col-md-6 mb-3" *ngIf="totalPurchases !== undefined">
-                <div class="card shadow-sm bg-info text-white">
-                    <div class="card-body">
-                        <h5 class="card-title">Total Purchases</h5>
-                        <p class="card-text display-4">{{ totalPurchases | currency }}</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Vendors Card -->
-            <div class="col-lg-3 col-md-6 mb-3" *ngIf="numberOfVendors !== undefined">
-                <div class="card shadow-sm bg-danger text-white">
-                    <div class="card-body">
-                        <h5 class="card-title">Vendors</h5>
-                        <p class="card-text display-4">{{ numberOfVendors }}</p>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-
-        <!-- Scrollable User List -->
-        <div class="row" *ngIf="userList && userList.length">
-            <div class="col-md-8">
-                <div class="card shadow-sm">
-                    <div class="card-header">User List</div>
-                    <div class="scrollable-list">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item" *ngFor="let user of userList">
-                                <span>{{ user.userName }} - {{ user.email }}</span>
-                                <span class="float-right">{{ user.phoneNumber }}</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        <!-- Total Sales Card -->
+        <div class="col-lg-3 col-md-6 mb-3" *ngIf="totalSales !== undefined">
+          <div class="card shadow-sm bg-success text-black">
+            <div class="card-body">
+              <h5 class="card-title">Total Sales</h5>
+              <p class="card-text display-4">{{ totalSales | currency }}</p>
             </div>
-            <!-- Expired Drugs List -->
-            <div class="col-md-4" *ngIf="expiredDrugs && expiredDrugs.length">
-                <div class="card shadow-sm">
-                    <div class="card-header">Expired Drugs</div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item" *ngFor="let drug of expiredDrugs">
-                            <span>{{ drug.productName }}</span>
-                            <span class="text-danger float-right">
-                                Expired on: {{ drug.expiryDate | date:'mediumDate' }}
-                            </span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+          </div>
         </div>
-
-        <!-- Scrollable Products List -->
-        <div class="row" *ngIf="productsList && productsList.length">
-            <div class="col-md-12">
-                <div class="card shadow-sm">
-                    <div class="card-header">Products</div>
-                    <div class="card-body">
-                        <div class="scrollable-products">
-                            <span *ngFor="let product of productsList">{{ product.name }} | </span>
-                        </div>
-                    </div>
-                </div>
+        <!-- Total Purchases Card -->
+        <div class="col-lg-3 col-md-6 mb-3" *ngIf="totalPurchases !== undefined">
+          <div class="card shadow-sm bg-info text-black">
+            <div class="card-body">
+              <h5 class="card-title">Total Purchases</h5>
+              <p class="card-text display-4">{{ totalPurchases | currency }}</p>
             </div>
+          </div>
         </div>
+        <!-- Vendors Card -->
+        <div class="col-lg-3 col-md-6 mb-3" *ngIf="numberOfVendors !== undefined">
+          <div class="card shadow-sm bg-danger text-black">
+            <div class="card-body">
+              <h5 class="card-title">Vendors</h5>
+              <p class="card-text display-4">{{ numberOfVendors }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Scrollable User List -->
+      <div class="row" *ngIf="userList && userList.length">
+        <div class="col-md-8">
+          <div class="card shadow-sm">
+            <div class="card-header">User List</div>
+            <div class="scrollable-list">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngFor="let user of userList">
+                  <span>{{ user.userName }} - {{ user.email }}</span>
+                  <span class="float-right">{{ user.phoneNumber }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Expired Drugs List -->
+        <div class="col-md-4" *ngIf="expiredDrugs && expiredDrugs.length">
+          <div class="card shadow-sm">
+            <div class="card-header">Expired Drugs</div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" *ngFor="let drug of expiredDrugs">
+                <span>{{ drug.productName }}</span>
+                <span class="text-danger float-right">
+                  Expired on: {{ drug.expiryDate | date:'mediumDate' }}
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Scrollable Products List -->
+      <div class="row" *ngIf="productsList && productsList.length">
+        <div class="col-md-12">
+          <div class="card shadow-sm">
+            <div class="card-header">Products</div>
+            <div class="card-body">
+              <div class="scrollable-products">
+                <span *ngFor="let product of productsList">{{ product.name }} | </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+  

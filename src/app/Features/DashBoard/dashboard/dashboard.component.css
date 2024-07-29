@@ -22,6 +22,7 @@
 .card-body {
   background-color: white; /* White background for the cards */
   transition: transform .2s; /* Animation for hover effect */
+  color: black; /* Ensure text color is black */
 }
 
 .card-body:hover {
@@ -35,11 +36,13 @@
 .card-header {
   background-color: #f8f9fa;
   border-bottom: 1px solid #e3e6f0;
+  color: black; /* Ensure text color is black */
 }
 
 .list-group-item {
   border: none;
   border-bottom: 1px solid #e3e6f0;
+  color: black; /* Ensure text color is black */
 }
 
 .list-group-item:last-child {
@@ -49,6 +52,7 @@
 .text-danger {
   font-weight: bold;
 }
+
 .scrollable-list, .scrollable-products {
   overflow-x: auto;
   white-space: nowrap;

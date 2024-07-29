@@ -3,6 +3,7 @@ import { LoginRequest } from '../models/login-request.model';
 import { AuthService } from '../Services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { DashboardService } from '../../DashBoard/service/dashboard.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent {
   model: LoginRequest;
   constructor(private authservice: AuthService, 
     private cookieService: CookieService,
-  private router: Router){
+  private router: Router,){
     this.model={
       email:'',
       password:''
@@ -33,7 +34,9 @@ export class LoginComponent {
           roles: response.roles
         })
 
-        this.router.navigateByUrl('Dashboard')
+        this.router.navigateByUrl('/Dashboard').then(() => {
+          // window.location.reload();
+        });
       }
     });
   }
