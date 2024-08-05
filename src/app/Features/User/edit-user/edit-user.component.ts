@@ -49,9 +49,6 @@ export class EditUserComponent implements OnInit {
     this.userService.editUser(this.user.id, this.user).subscribe({
       next: () => {
         this.success.emit();
-        this.router.navigateByUrl('/users').then(() => {
-          window.location.reload();
-        });
       },
       error: (error) => {
         this.error.emit();

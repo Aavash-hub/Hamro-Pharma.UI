@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Transaction } from '../../models/Transcation.model';
 import { TransactionDto } from '../../models/TranscationDto.model';
+import { Bill } from '../../models/Bill.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +22,25 @@ export class TranscationService {
         catchError(this.handleError)
       );
   }
-  private handleError(error: any) {
+
+   getTransactionById(id: string): Observable<Transaction> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<Transaction>(url)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  generateBill(transactionId: string): Observable<Bill> {
+    const url = `${this.apiUrl}/bill/${transactionId}`;
+    return this.http.get<Bill>(url)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  private handleError(error: HttpErrorResponse) {
     console.error('An error occurred:', error);
-    // More detailed error handling would go here
     return throwError(() => new Error('An error occurred while processing your request'));
   }
 }

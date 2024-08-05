@@ -27,9 +27,8 @@ export class PurchaseReportComponent implements OnInit {
   loadPurchaseReports(): void {
     this.reportService.getPurchaseReport().subscribe({
       next: (reports: PurchaseReport[]) => {
-        console.log("Checking date parsing:", reports.map(r => new Date(r.purchaseDate)));
         this.purchaseReports = reports;
-        this.filteredPurchaseReports = [...reports];
+        this.filteredPurchaseReports = [...this.purchaseReports];
         this.updatePagination();
       },
       error: (error) => {
@@ -37,38 +36,30 @@ export class PurchaseReportComponent implements OnInit {
       }
     });
   }
+
   filterPurchaseReports(): void {
-    console.log("Selected Date from Input:", this.selectedDate);
-  
-    const selectedDateString = new Date(this.selectedDate).toISOString().split('T')[0];
-    console.log("Formatted Selected Date:", selectedDateString);
-  
-    this.filteredPurchaseReports = this.purchaseReports.filter(report => {
-      const reportDate = new Date(report.purchaseDate).toISOString().split('T')[0];
-      return reportDate === selectedDateString;
-    });
-  
-    console.log("Filtered Reports:", this.filteredPurchaseReports);
-  
+    if (!this.selectedDate) {
+      this.filteredPurchaseReports = [...this.purchaseReports];
+    } else {
+      this.filteredPurchaseReports = this.purchaseReports.filter(report => {
+        return report.purchasedate === this.selectedDate;
+      });
+    }
     this.currentPage = 1;
     this.updatePagination();
   }
-  
-  
-  
 
   updatePagination(): void {
     this.totalPages = Math.ceil(this.filteredPurchaseReports.length / this.itemsPerPage);
     this.setPage(this.currentPage);
   }
-  
+
   setPage(page: number): void {
     this.currentPage = page;
     const start = (page - 1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;
     this.paginatedPurchaseReports = this.filteredPurchaseReports.slice(start, end);
   }
-  
 
   previousPage(): void {
     if (this.currentPage > 1) {

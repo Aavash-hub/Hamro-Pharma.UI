@@ -22,10 +22,9 @@
                         <th>Number</th>
                         <th>Company Name</th>
                         <th>Balance</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                        <th>pay</th>
-
+                        <th *ngIf="authservice.hasRole('Writer')">Edit</th>
+                        <th *ngIf="authservice.hasRole('Writer')">Delete</th>
+                        <th *ngIf="authservice.hasRole('Writer')">Pay</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,9 +34,15 @@
                         <td>{{ vendor.number }}</td>
                         <td>{{ vendor.companyName }}</td>
                         <td>{{ vendor.balance }}</td>
-                        <td><button class="btn btn-primary" (click)="editVendor(vendor)">Edit</button></td>
-                        <td><button class="btn btn-danger" (click)="deleteVendor(vendor.id)">Delete</button></td>
-                        <td><button class="btn btn-primary" (click)="payVendorBalance(vendor)">Pay</button></td>
+                        <td *ngIf="authservice.hasRole('Writer')">
+                            <button class="btn btn-primary" (click)="editVendor(vendor)">Edit</button>
+                        </td>
+                        <td *ngIf="authservice.hasRole('Writer')">
+                            <button class="btn btn-danger" (click)="deleteVendor(vendor.id)">Delete</button>
+                        </td>
+                        <td *ngIf="authservice.hasRole('Writer')">
+                            <button class="btn btn-primary" (click)="payVendorBalance(vendor)">Pay</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

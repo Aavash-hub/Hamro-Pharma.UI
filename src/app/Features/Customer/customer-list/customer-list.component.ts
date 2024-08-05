@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../service/customer.service';
 import { Customer } from '../../models/Customer.model';
 import { Router } from '@angular/router';
+import { AuthService } from '../../auth/Services/auth.service';
 
 @Component({
   selector: 'app-customer-list',
@@ -29,7 +30,7 @@ selectedCustomer: Customer = {
   customerBalance: 0
 };
 
-constructor(private customerService: CustomerService) { }
+constructor(private customerService: CustomerService, public authservice: AuthService) { }
 
 ngOnInit(): void {
   this.loadCustomers();

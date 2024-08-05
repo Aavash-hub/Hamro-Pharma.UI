@@ -19,20 +19,24 @@ export class TranscationComponent implements OnInit {
   discount: number = 0;
   totalAmount!: number;
   transactionDate: Date = new Date();
-  showSuccessDialog = false; // For showing the success dialog
-  showErrorDialog = false; 
+  showErrorDialog = false;
+  errorMessage: string = '';
+
+  // Variables to control showing the bill
+  showBill: boolean = false;
+  transactionId: string = '';
 
   constructor(
     private router: Router,
     private transactionService: TranscationService,
     private customerService: CustomerService,
-    private orderService: OrderService, // Inject OrderService
-    private route: ActivatedRoute // To get the order ID from the route if necessary
+    private orderService: OrderService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      const orderId = params.get('id'); // Use 'id' to match the route configuration
+      const orderId = params.get('id');
       if (orderId) {
         this.loadOrder(orderId);
       } else {
@@ -49,11 +53,6 @@ export class TranscationComponent implements OnInit {
     );
   }
   
-  navigateToOrderPage() {
-    this.router.navigate(['/Order']); // Navigates back to the Order page
-  }
-  
-
   loadOrder(orderId: string) {
     this.orderService.getOrderById(orderId).subscribe({
       next: (order) => {
@@ -66,8 +65,8 @@ export class TranscationComponent implements OnInit {
 
   createTransaction() {
     if (!this.order) {
-      console.error('Order is not defined');
-      this.showErrorDialog = true; // Show error dialog if the order is not defined
+      this.showErrorDialog = true;
+      this.errorMessage = 'Order is not defined';
       return;
     }
   
@@ -81,21 +80,27 @@ export class TranscationComponent implements OnInit {
   
     this.transactionService.addTransaction(this.order.id, transactionDto).subscribe({
       next: (newTransaction) => {
-        console.log('Transaction created', newTransaction);
-        this.showSuccessDialog = true;
+        this.transactionId = newTransaction.id;
+        this.showBill = true;  // Show the bill
       },
       error: (error) => {
-        console.error('Error creating transaction', error);
-        this.showErrorDialog = true; // Show error dialog on failure
+        this.showErrorDialog = true;
+        this.errorMessage = 'Error creating transaction: ' + error.message;
       }
     });
-  }  
-  closeSuccessDialog() {
-    this.showSuccessDialog = false; // Hide success dialog
   }
   
+  // New method to acknowledge the bill
+  acknowledgeBillAndNavigate() {
+    this.showBill = false; // Close the bill component
+    this.navigateToOrderPage(); // Navigate to the order page
+  }
+  
+  navigateToOrderPage() {
+    this.router.navigate(['/Order']); // Corrected navigation
+  }
+
   closeErrorDialog() {
-    this.showErrorDialog = false; // Hide error dialog
+    this.showErrorDialog = false;
   }
-  
 }

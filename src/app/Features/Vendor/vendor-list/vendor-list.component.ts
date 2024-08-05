@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VendorService } from '../service/vendor.service';
 import { Vendor } from '../../models/vendor.model';
+import { AuthService } from '../../auth/Services/auth.service';
 
 @Component({
   selector: 'app-vendor-list',
@@ -28,7 +29,7 @@ export class VendorListComponent implements OnInit {
     balance: 0
   };
 
-  constructor(private vendorService: VendorService) { }
+  constructor(private vendorService: VendorService,public authservice: AuthService) { }
 
   ngOnInit(): void {
     this.loadVendors();

@@ -27,9 +27,6 @@ export class AdduserComponent implements OnDestroy {
     this.addUserSubscription = this.userservice.adduser(this.model).subscribe({
       next: () => {
         this.success.emit();
-        this.router.navigateByUrl('/users').then(() => {
-          window.location.reload();
-        });
       },
       error: () => {
         this.error.emit();

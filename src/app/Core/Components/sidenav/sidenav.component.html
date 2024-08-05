@@ -3,7 +3,7 @@
     <img src="assets/logo/logo.png" alt="Logo" class="logo mb-3">
     <h3>Hamro-Pharma</h3>
     <nav class="nav flex-column w-100 mt-4">
-      <a [routerLink]="['/Dashboard']" routerLinkActive="active" class="nav-link">
+      <a *ngIf="authservice.hasRole('Writer')" [routerLink]="['/Dashboard']" routerLinkActive="active" class="nav-link">
         <i class="fa-solid fa-gauge"></i>
         Dashboard
       </a>
@@ -11,7 +11,7 @@
         <i class="fa-solid fa-warehouse"></i>
         Products
       </a>
-      <a [routerLink]="['/User/userlist']" routerLinkActive="active" class="nav-link">
+      <a *ngIf="authservice.hasRole('Writer')" [routerLink]="['/User/userlist']" routerLinkActive="active" class="nav-link">
         <i class="fa-solid fa-clipboard-user"></i>
         Users
       </a>
@@ -31,7 +31,7 @@
         <i class="fa-solid fa-file-invoice-dollar"></i>
         Orders
       </a>
-      <div class="dropdown w-100">
+      <div *ngIf="authservice.hasRole('Writer')" class="dropdown w-100">
         <a class="nav-link dropdown-toggle" (click)="toggleReportMenu()">
           <i class="fa-solid fa-chart-line"></i>
           Reports

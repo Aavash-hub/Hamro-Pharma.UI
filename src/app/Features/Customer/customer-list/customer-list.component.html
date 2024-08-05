@@ -22,9 +22,9 @@
                         <th>Phone</th>
                         <th>Address</th>
                         <th>Balance</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                        <th>Pay</th>
+                        <th *ngIf="authservice.hasRole('Writer')">Edit</th>
+                        <th *ngIf="authservice.hasRole('Writer')">Delete</th>
+                        <th *ngIf="authservice.hasRole('Writer')">Pay</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,9 +34,15 @@
                         <td>{{ customer.phoneNumber }}</td>
                         <td>{{ customer.address }}</td>
                         <td>{{ customer.customerBalance }}</td>
-                        <td><button class="btn btn-primary" (click)="editCustomer(customer)">Edit</button></td>
-                        <td><button class="btn btn-danger" (click)="deleteCustomer(customer.id)">Delete</button></td>
-                        <td><button class="btn btn-primary" (click)="payCustomerBalance(customer)">Pay</button></td>
+                        <td *ngIf="authservice.hasRole('Writer')">
+                            <button class="btn btn-primary" (click)="editCustomer(customer)">Edit</button>
+                        </td>
+                        <td *ngIf="authservice.hasRole('Writer')">
+                            <button class="btn btn-danger" (click)="deleteCustomer(customer.id)">Delete</button>
+                        </td>
+                        <td *ngIf="authservice.hasRole('Writer')">
+                            <button class="btn btn-primary" (click)="payCustomerBalance(customer)">Pay</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

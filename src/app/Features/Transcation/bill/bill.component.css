@@ -1,0 +1,97 @@
+/* General reset and styles for the invoice */
+.invoice-container {
+    font-family: 'Arial', sans-serif;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Header styling */
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.invoice-logo img {
+    width: 100px; /* Adjust size as needed */
+}
+
+.invoice-logo h1 {
+    font-size: 24px;
+    margin-left: 15px;
+    color: #333;
+}
+
+.customer-info {
+    text-align: right;
+}
+
+.customer-info h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Styling details below the header */
+.invoice-details p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+/* Table styles */
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.invoice-table thead {
+    background-color: #f8f8f8;
+}
+
+.invoice-table th, .invoice-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.invoice-table th {
+    font-size: 16px;
+}
+
+.invoice-table td {
+    font-size: 14px;
+}
+
+/* Summary section styling */
+.invoice-summary {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.invoice-summary p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.invoice-summary .total {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Notes and footer */
+.invoice-notes {
+    text-align: center;
+    margin-top: 20px;
+    font-style: italic;
+    color: #666;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}

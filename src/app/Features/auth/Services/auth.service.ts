@@ -51,8 +51,10 @@ export class AuthService {
     if (currentUser) {
       return true;
     }
-
     return false;
   }
-
+  hasRole(role: string): boolean {
+    const roles = localStorage.getItem('user-roles');
+    return roles ? roles.split(',').includes(role) : false;
+  }
 }

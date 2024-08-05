@@ -12,31 +12,41 @@ import { DashboardService } from '../../DashBoard/service/dashboard.service';
 })
 export class LoginComponent {
   model: LoginRequest;
-  constructor(private authservice: AuthService, 
+  errorMessage: string = '';  // Add this line
+
+  constructor(
+    private authService: AuthService, 
     private cookieService: CookieService,
-  private router: Router,){
-    this.model={
-      email:'',
-      password:''
+    private router: Router
+  ) {
+    this.model = {
+      email: '',
+      password: ''
     }
   }
+
   onFormSubmit(): void {
-    this.authservice.login(this.model)
-    .subscribe({
-      next: (response)=>{
-        //set auth cookie
-        this.cookieService.set('Authorization', 'Bearer ${response.token}',
+    this.authService.login(this.model).subscribe({
+      next: (response) => {
+        this.cookieService.set('Authorization', `Bearer ${response.token}`,
           undefined, '/', undefined, true, 'Strict'
         );
-        //set the user
-        this.authservice.setUser({
+        this.authService.setUser({
           email: response.email,
           roles: response.roles
-        })
-
-        this.router.navigateByUrl('/Dashboard').then(() => {
-          // window.location.reload();
         });
+
+        if (response.roles.includes('Writer')) {
+          this.router.navigateByUrl('/Dashboard').then(() => window.location.reload());
+        } else if (response.roles.includes('Reader')) {
+          this.router.navigateByUrl('/Order').then(() => window.location.reload());
+        } else {
+          this.router.navigateByUrl('/').then(() => window.location.reload());
+        }
+      },
+      error: (error) => {
+        this.errorMessage = 'Invalid email or password';  // Set error message
+        console.error('Login failed', error);
       }
     });
   }

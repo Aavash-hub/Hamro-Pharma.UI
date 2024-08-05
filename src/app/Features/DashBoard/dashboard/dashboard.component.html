@@ -1,89 +1,112 @@
-<div class="main-content">
-    <div class="container-fluid pt-3">
-      <!-- Stats Cards -->
-      <div class="row mb-4">
-        <!-- Total Customers Card -->
-        <div class="col-lg-3 col-md-6 mb-3" *ngIf="numberOfCustomers !== undefined">
-          <div class="card shadow-sm bg-primary text-black">
-            <div class="card-body">
-              <h5 class="card-title">Total Customers</h5>
-              <p class="card-text display-4">{{ numberOfCustomers }}</p>
-            </div>
-          </div>
-        </div>
-        <!-- Total Sales Card -->
-        <div class="col-lg-3 col-md-6 mb-3" *ngIf="totalSales !== undefined">
-          <div class="card shadow-sm bg-success text-black">
-            <div class="card-body">
-              <h5 class="card-title">Total Sales</h5>
-              <p class="card-text display-4">{{ totalSales | currency }}</p>
-            </div>
-          </div>
-        </div>
-        <!-- Total Purchases Card -->
-        <div class="col-lg-3 col-md-6 mb-3" *ngIf="totalPurchases !== undefined">
-          <div class="card shadow-sm bg-info text-black">
-            <div class="card-body">
-              <h5 class="card-title">Total Purchases</h5>
-              <p class="card-text display-4">{{ totalPurchases | currency }}</p>
-            </div>
-          </div>
-        </div>
-        <!-- Vendors Card -->
-        <div class="col-lg-3 col-md-6 mb-3" *ngIf="numberOfVendors !== undefined">
-          <div class="card shadow-sm bg-danger text-black">
-            <div class="card-body">
-              <h5 class="card-title">Vendors</h5>
-              <p class="card-text display-4">{{ numberOfVendors }}</p>
-            </div>
-          </div>
+<div class="dashboard-container">
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Header -->
+    <header class="dashboard-header">
+      <img src="assets/logo/logo.png" alt="Logo" class="logo">
+      <h1>Hamro Pharma</h1>
+    </header>
+
+    <!-- Stat Cards -->
+    <section class="stats">
+      <div class="stat-card">
+        <i class="fa-solid fa-users"></i>
+        <p>Total Customers</p>
+        <h3>{{ numberOfCustomers }}</h3>
+      </div>
+      <div class="stat-card">
+        <i class="fa-solid fa-dollar-sign"></i>
+        <p>Total Sales</p>
+        <h3>{{ totalSales | currency }}</h3>
+      </div>
+      <div class="stat-card">
+        <i class="fa-solid fa-dollar-sign"></i>
+        <p>Total Purchases</p>
+        <h3>{{ totalPurchases | currency }}</h3>
+      </div>
+      <div class="stat-card">
+        <i class="fa-solid fa-users"></i>
+        <p>Vendors</p>
+        <h3>{{ numberOfVendors }}</h3>
+      </div>
+    </section>
+
+    <!-- Chart and Side Widgets -->
+    <section class="dashboard-widgets">
+      <div class="charts">
+        <div class="chart-card">
+          <h4>Sales Growth Chart</h4>
+          <canvas id="salesGrowthChart"></canvas>
         </div>
       </div>
-  
-      <!-- Scrollable User List -->
-      <div class="row" *ngIf="userList && userList.length">
-        <div class="col-md-8">
-          <div class="card shadow-sm">
-            <div class="card-header">User List</div>
-            <div class="scrollable-list">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item" *ngFor="let user of userList">
-                  <span>{{ user.userName }} - {{ user.email }}</span>
-                  <span class="float-right">{{ user.phoneNumber }}</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- Expired Drugs List -->
-        <div class="col-md-4" *ngIf="expiredDrugs && expiredDrugs.length">
-          <div class="card shadow-sm">
-            <div class="card-header">Expired Drugs</div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item" *ngFor="let drug of expiredDrugs">
-                <span>{{ drug.productName }}</span>
-                <span class="text-danger float-right">
-                  Expired on: {{ drug.expiryDate | date:'mediumDate' }}
-                </span>
-              </li>
-            </ul>
-          </div>
+      <div class="side-widgets">
+        <div class="orders-widget">
+          <h4>Expired Drugs</h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let drug of expiredDrugs">
+              <span>{{ drug.productName }}</span>
+              <span class="text-danger float-right">
+                Expired on: {{ drug.expiryDate | date:'mediumDate' }}
+              </span>
+            </li>
+          </ul>
         </div>
       </div>
-  
-      <!-- Scrollable Products List -->
-      <div class="row" *ngIf="productsList && productsList.length">
-        <div class="col-md-12">
-          <div class="card shadow-sm">
-            <div class="card-header">Products</div>
-            <div class="card-body">
-              <div class="scrollable-products">
-                <span *ngFor="let product of productsList">{{ product.name }} | </span>
-              </div>
-            </div>
-          </div>
+    </section>
+
+    <!-- User List Section -->
+    <section class="table-section">
+      <div class="card">
+        <div class="card-header">
+          <h5>User List</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Change Password</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of userList">
+                <td>{{ user.userName }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.phoneNumber }}</td>
+                <td>
+                  <button class="btn btn-outline-success btn-sm" (click)="openChangePasswordPanel(user.id)">Change Password</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
+    </section>
+  </main>
+</div>
+
+<!-- Custom Change Password Modal -->
+<div class="custom-modal" *ngIf="isChangePasswordModalOpen">
+  <div class="custom-modal-content">
+    <div class="custom-modal-header">
+      <h5>Change Password</h5>
+      <button class="close" (click)="closeChangePasswordPanel()">&times;</button>
+    </div>
+    <div class="custom-modal-body">
+      <form (ngSubmit)="changePassword()">
+        <div class="mb-3">
+          <label for="newPassword" class="form-label">New Password:</label>
+          <input type="password" class="form-control" id="newPassword" [(ngModel)]="changePasswordDto.newPassword" name="newPassword" required>
+        </div>
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Confirm Password:</label>
+          <input type="password" class="form-control" id="confirmPassword" [(ngModel)]="changePasswordDto.confirmPassword" name="confirmPassword" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
     </div>
   </div>
-  
+  <div class="custom-modal-backdrop" (click)="closeChangePasswordPanel()"></div>
+</div>

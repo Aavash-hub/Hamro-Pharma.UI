@@ -134,7 +134,7 @@
     z-index: 999; /* Ensure it covers other content */
   }
   
-  app-adduser {
+  app-adduser, app-edituser {
     position: absolute;
     top: 50%;
     left: 50%;

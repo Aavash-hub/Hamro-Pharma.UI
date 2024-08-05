@@ -1,100 +1,235 @@
-/* Main Content */
-.main-content {
-  margin-left: 100px; /* Adjust according to your sidebar width */
-}
-
-/* Dashboard Stats */
-.dashboard-stats {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-}
-
-/* Card Adjustment */
-.dashboard-stats .card {
-  flex: 0 0 auto;
-  width: 24%; /* Adjust based on how many cards per row */
-  margin-bottom: 1rem; /* Space between cards */
-}
-
-.card-body {
-  background-color: white; /* White background for the cards */
-  transition: transform .2s; /* Animation for hover effect */
-  color: black; /* Ensure text color is black */
-}
-
-.card-body:hover {
-  transform: scale(1.05); /* Slight zoom on hover */
-}
-
-.display-4 {
-  font-size: 2.5rem; /* Adjust font size accordingly */
-}
-
-.card-header {
+/* General Layout */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f8f9fa;
-  border-bottom: 1px solid #e3e6f0;
-  color: black; /* Ensure text color is black */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-y: auto;
 }
 
-.list-group-item {
-  border: none;
-  border-bottom: 1px solid #e3e6f0;
-  color: black; /* Ensure text color is black */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Use min-height to ensure the container covers the viewport */
+  width: 100%; /* Ensures it uses the available space next to your sidebar */
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f4f5f7;
+  overflow-y: auto; 
 }
 
-.list-group-item:last-child {
-  border-bottom: none;
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
-.text-danger {
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  background-color: #1150AB;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  justify-content: center;
+}
+
+.dashboard-header .logo {
+  width: 150px; /* Increased width */
+  height: 150px; /* Increased height */
+  margin-right: 20px; /* Adjusted margin to balance the increased size */
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 2.5rem; /* Slightly increased font size for the heading */
+  color: #333;
   font-weight: bold;
 }
 
-.scrollable-list, .scrollable-products {
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-.scrollable-list .list-group-item {
+.stats {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  flex: 1 1 23%;
+  text-align: left; /* Align text to the left */
+  margin: 10px;
+  color: #333;
+  min-width: 200px;
+  transition: transform 0.2s ease-in-out;
+  position: relative;
+}
+
+.stat-card i {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 2rem;
+  color: #6544ff; /* Updated to green color */
+}
+
+.stat-card h3 {
+  font-size: 1.75rem;
+  margin-bottom: 10px;
+  margin-left: 50px; /* Adjust to account for the icon */
+}
+
+.stat-card p {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  margin-left: 50px; /* Adjust to account for the icon */
+}
+
+.stat-change {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin-left: 50px; /* Adjust to account for the icon */
+}
+
+.dashboard-widgets {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.charts {
+  flex: 1 1 65%;
+  max-width: 65%;
+}
+
+.chart-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.side-widgets {
+  flex: 1 1 30%;
+  max-width: 30%;
+}
+
+.orders-widget {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  height: 100%;
+}
+
+.table-section {
+  margin-top: 20px;
 }
 
 .card {
-  transition: transform .2s; /* Animation for hover effect */
-}
-
-.card:hover {
-  transform: scale(1.05); /* Slight zoom on hover */
-}
-
-.display-4 {
-  font-size: 2.5rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
 }
 
 .card-header {
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #e3e6f0;
+  padding: 20px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  background-color: #1150AB;
 }
 
-.list-group-item {
+.card-body {
+  padding: 20px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+/* Custom Modal */
+.custom-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+}
+
+.custom-modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.custom-modal-content {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1060;
+  padding: 20px;
+  width: 500px;
+  max-width: 90%;
+}
+
+.custom-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.custom-modal-header .close {
+  font-size: 1.5rem;
   border: none;
-  border-bottom: 1px solid #e3e6f0;
+  background: none;
 }
 
-.list-group-item:last-child {
-  border-bottom: none;
+.custom-modal-body {
+  padding-top: 0;
 }
 
-.text-danger {
-  font-weight: bold;
+/* Expired Drugs List */
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e5e5;
 }
 
-@media (max-width: 768px) {
-  .dashboard-stats .card {
-      width: 100%; /* Full width on smaller screens */
-  }
+/* Chart Customization */
+#salesGrowthChart {
+  height: 100% !important;
+  max-height: 300px;
+}
+
+.chartjs-hidden-arc {
+  border-width: 0 !important;
+  background: none;
 }

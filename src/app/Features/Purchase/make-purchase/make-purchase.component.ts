@@ -22,11 +22,18 @@ export class MakePurchaseComponent implements OnInit {
     vendorId: '',
     productId: ''
   };
-  
+
   productList: Products[] = [];
   vendorList: Vendor[] = [];
 
-  constructor(private purchaseService: PurchaseService, private productService: ProductService, private vendorService: VendorService) { }
+  showSuccessDialog = false;
+  showErrorDialog = false;
+
+  constructor(
+    private purchaseService: PurchaseService,
+    private productService: ProductService,
+    private vendorService: VendorService
+  ) {}
 
   ngOnInit(): void {
     this.loadProducts();
@@ -37,11 +44,12 @@ export class MakePurchaseComponent implements OnInit {
     this.purchaseService.makePurchase(this.purchaseDto).subscribe({
       next: () => {
         console.log('Purchase successful');
-        // Reset the form after successful purchase
+        this.showSuccessDialog = true;
         this.resetPurchaseDto();
       },
       error: (error) => {
         console.error('Failed to make purchase:', error);
+        this.showErrorDialog = true;
       }
     });
   }
@@ -56,6 +64,14 @@ export class MakePurchaseComponent implements OnInit {
       vendorId: '',
       productId: ''
     };
+  }
+
+  closeSuccessDialog(): void {
+    this.showSuccessDialog = false;
+  }
+
+  closeErrorDialog(): void {
+    this.showErrorDialog = false;
   }
 
   loadProducts(): void {

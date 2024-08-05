@@ -2,18 +2,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 product-section">
-                <h2 class="section-title">Main Menus</h2>
-                <!-- Display available products -->
+                <h2 class="section-title">Medicines</h2>
                 <div class="product-grid">
-                    <!-- Use the correct property binding for src and alt attributes -->
-                    <!-- Make sure you're iterating through 'products' from your component -->
                     <div *ngFor="let product of products" class="product-card">
                         <img src="assets/image/medi.jpg" alt="{{ product.name }}" class="product-image">
                         <div class="product-info">
                             <h5 class="product-name">{{ product.name }}</h5>
                             <h5 class="product-quantity">{{ product.quantity }}</h5>
                             <p class="product-price">Price: Rs. {{ product.price }}</p>
-                            
                             <button (click)="addToOrder(product)" class="btn add-to-order">Add to Order</button>
                         </div>
                     </div>
@@ -21,7 +17,6 @@
             </div>
             <div class="col-md-8 order-section">
                 <h2 class="section-title">Ordered Items</h2>
-                <!-- Order List Start -->
                 <div class="order-list-container">
                     <div class="order-list-header">
                         <span class="list-product">Product</span>
@@ -30,7 +25,6 @@
                         <span class="list-actions">Actions</span>
                     </div>
                     <div class="ordered-items-list">
-                        <!-- Ordered items will be generated here -->
                         <div *ngFor="let item of orderedItems" class="ordered-item-card">
                             <span class="item-name">{{ item.productName }}</span>
                             <span class="item-quantity">{{ item.quantity }}</span>
@@ -39,7 +33,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Button to create order -->
                 <button (click)="createOrder(orderedItems)" class="btn create-order">Create Order</button>
             </div>
         </div>

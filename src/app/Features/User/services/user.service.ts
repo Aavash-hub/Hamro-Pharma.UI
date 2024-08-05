@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AddUserRequest } from '../../models/add-user-request.model';
 import { Observable } from 'rxjs';
 import { userlist } from '../../models/userlist.model';
+import { ChangePasswordDto } from '../../models/Change-password-user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,9 @@ export class UserService {
 
   getUserById(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+  changePassword(changePasswordDto: ChangePasswordDto): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/changepassword`, changePasswordDto);
   }
 }
 

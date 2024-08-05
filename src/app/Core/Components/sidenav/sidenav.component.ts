@@ -12,7 +12,7 @@ export class SidenavComponent implements OnInit {
   isReportMenuOpen = false;
   user?: User;
 
-  constructor(private authservice: AuthService, private router: Router) {}
+  constructor(public authservice: AuthService, private router: Router) {}
 
   toggleReportMenu() {
     this.isReportMenuOpen = !this.isReportMenuOpen;

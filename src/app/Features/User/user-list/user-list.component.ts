@@ -126,6 +126,7 @@ export class UserListComponent implements OnInit {
 
   closeSuccessDialog(): void {
     this.showSuccessDialog = false;
+    this.router.navigate(['/User/userlist']); 
   }
 
   closeErrorDialog(): void {

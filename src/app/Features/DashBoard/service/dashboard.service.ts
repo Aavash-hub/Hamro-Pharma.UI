@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { DashboardDto } from '../../models/dashBoard.model';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { ExpiredDrugDto } from '../../models/ExpiredDrugDto.model';
+import { SalesData } from '../../models/sales-data.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,9 @@ export class DashboardService {
       })
     );
   }
-  
+  getSalesGrowth(): Observable<SalesData[]> {
+    return this.http.get<SalesData[]>(`${this.apiUrl}/salesgrowth`);
+  }
 
   getTotalPurchases(): Observable<number> {
     return this.http.get<number>(`${this.apiUrl}/total-purchases`);
